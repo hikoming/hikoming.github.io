@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Fitness Pet — Tamagotchi for your workouts</title>
+    <!-- Google Fonts + simple styling -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FEFDF8;
+            color: #1A2C2E;
+            line-height: 1.4;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* header / nav */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #E9E3D5;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.65rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #E05A2A, #C73F1E);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .logo i {
+            background: none;
+            color: #E05A2A;
+            margin-right: 6px;
+        }
+
+        .nav-badge {
+            background: #F1EEE6;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #C73F1E;
+        }
+
+        /* hero */
+        .hero {
+            padding: 48px 0 40px 0;
+        }
+
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #FFECE3;
+            color: #C3421A;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 30px;
+            margin-bottom: 1rem;
+            letter-spacing: 0.3px;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.4rem, 6vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #232B2C;
+        }
+
+        .hero-text h1 span {
+            background: linear-gradient(120deg, #E05A2A, #F2945C);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #4F5E5F;
+            margin-bottom: 1.8rem;
+            max-width: 550px;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #E05A2A;
+            color: white;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: 0.2s ease;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn i {
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #BC401B;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(224, 90, 42, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #DDD5C3;
+            color: #2C494B;
+        }
+
+        .btn-outline:hover {
+            background: #FFF8F0;
+            border-color: #E05A2A;
+            transform: translateY(-2px);
+        }
+
+        /* gallery showcase (images + video) */
+        .showcase {
+            margin: 40px 0 60px 0;
+        }
+
+        .section-title {
+            font-size: 1.9rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #232B2C;
+        }
+
+        .section-title i {
+            color: #E05A2A;
+            margin-right: 10px;
+        }
+
+        /* media grid: 6 images + video card */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+
+        .media-card {
+            background: white;
+            border-radius: 36px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid #F2EADE;
+        }
+
+        .media-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 36px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .media-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 1242 / 2688;
+            /* preserve tall ratio approx 0.462 */
+            object-fit: cover;
+            background: #F9F5EC;
+        }
+
+        .video-card {
+            background: #F7F2E7;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-wrapper {
+            position: relative;
+            background: #000;
+            width: 100%;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 886 / 1920;
+            /* matches given ratio */
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .media-label {
+            padding: 14px 16px;
+            font-weight: 500;
+            background: white;
+            font-size: 0.85rem;
+            color: #9B7E64;
+            border-top: 1px solid #F1E8DC;
+            text-align: center;
+        }
+
+        .video-label {
+            background: #FFF5EA;
+            color: #C3421A;
+        }
+
+        .highlight-features {
+            background: #FFFFFF;
+            border-radius: 48px;
+            padding: 48px 40px;
+            margin: 40px 0 60px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+            border: 1px solid #EDE5D8;
+        }
+
+        .features-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+
+        .feature-block {
+            flex: 1;
+            min-width: 210px;
+        }
+
+        .feature-block h3 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #2F4B4D;
+        }
+
+        .feature-block h3 i {
+            color: #E05A2A;
+            font-size: 1.5rem;
+        }
+
+        .feature-block p {
+            color: #5C6E6F;
+            line-height: 1.5;
+        }
+
+        .quote {
+            text-align: center;
+            background: #FFF6EF;
+            border-radius: 44px;
+            padding: 2.2rem;
+            margin: 30px 0 50px;
+        }
+
+        .quote p {
+            font-size: 1.3rem;
+            font-weight: 500;
+            font-style: italic;
+            color: #354D4F;
+        }
+
+        .footer {
+            border-top: 1px solid #E7DFD1;
+            padding: 36px 0 32px;
+            text-align: center;
+            color: #7A8A8C;
+            font-size: 0.8rem;
+        }
+
+        .footer a {
+            color: #E05A2A;
+            text-decoration: none;
+        }
+
+        @media (max-width: 760px) {
+            .hero-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .btn-group {
+                justify-content: center;
+            }
+
+            .highlight-features {
+                padding: 32px 20px;
+            }
+
+            .features-flex {
+                flex-direction: column;
+                gap: 1.8rem;
+            }
+
+            .media-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .badge-icon {
+            background: #E05A2A10;
+            border-radius: 32px;
+            padding: 2px 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-paw"></i> Fitness Pet
+            </div>
+            <div class="nav-badge">
+                <i class="fas fa-apple"></i> iPhone + Watch
+            </div>
+        </nav>
+    </div>
+
+    <main>
+        <div class="container">
+            <!-- hero section -->
+            <div class="hero">
+                <div class="hero-grid">
+                    <div class="hero-text">
+                        <div class="hero-badge">
+                            <i class="fas fa-heartbeat"></i> Tamagotchi · powered by motion
+                        </div>
+                        <h1>Turn your <span>workout</span> into<br> a living game</h1>
+                        <p>Adopt a digital pet that lives inside your Apple devices. Every step, run, or gym session
+                            feeds your buddy. Stay fit, stay playful.</p>
+                        <div class="btn-group">
+                            <a href="#" class="btn"><i class="fab fa-apple"></i> Coming soon</a>
+                            <a href="#" class="btn btn-outline"><i class="fas fa-play"></i> Watch preview</a>
+                        </div>
+                    </div>
+                    <div style="flex: 0.8; min-width: 200px; text-align: center;">
+                        <div style="background: #FEF1E6; border-radius: 62px; padding: 12px;">
+                            <i class="fas fa-dog" style="font-size: 4rem; color: #E05A2A;"></i>
+                            <div style="font-weight: 600; margin-top: 12px;">🐾 active buddy</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- full media showcase: 6 images (0.png to 5.png) + video (1.mov) -->
+            <div class="showcase">
+                <div class="section-title">
+                    <i class="fas fa-images"></i> Meet your digital companion
+                </div>
+                <div class="media-grid">
+                    <!-- 0.png to 5.png exactly 6 images -->
+                    <div class="media-card">
+                        <img src="0.png" alt="Fitness pet gameplay"
+                            onerror="this.src='https://placehold.co/600x1300?text=0.png+preview'">
+                        <div class="media-label">💪 feed with fitness</div>
+                    </div>
+                    <div class="media-card">
+                        <img src="1.png" alt="Pet mood & care"
+                            onerror="this.src='https://placehold.co/600x1300?text=1.png+preview'">
+                        <div class="media-label">😊 intelligent mood system</div>
+                    </div>
+                    <div class="media-card">
+                        <img src="2.png" alt="Interactive games"
+                            onerror="this.src='https://placehold.co/600x1300?text=2.png+preview'">
+                        <div class="media-label">🎮 rock, paper, scissors + more</div>
+                    </div>
+                    <div class="media-card">
+                        <img src="3.png" alt="Apple Watch sync"
+                            onerror="this.src='https://placehold.co/600x1300?text=3.png+preview'">
+                        <div class="media-label">⌚️ realtime iWatch integration</div>
+                    </div>
+                    <div class="media-card">
+                        <img src="4.png" alt="Walk run gym"
+                            onerror="this.src='https://placehold.co/600x1300?text=4.png+preview'">
+                        <div class="media-label">🏃 every move feeds your pet</div>
+                    </div>
+                    <div class="media-card">
+                        <img src="5.png" alt="Happy digital buddy"
+                            onerror="this.src='https://placehold.co/600x1300?text=5.png+preview'">
+                        <div class="media-label">🌟 raise a happy buddy</div>
+                    </div>
+                    <!-- video card (1.mov) -->
+                    <div class="media-card video-card">
+                        <div class="video-wrapper">
+                            <video id="promoVideo" poster="0.png" playsinline muted>
+                                <source src="1.mov" type="video/quicktime">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="media-label video-label">
+                            <i class="fas fa-play-circle"></i> Sneak peek · 886x1920
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature highlights: exact copy from app description -->
+            <div class="highlight-features">
+                <div class="features-flex">
+                    <div class="feature-block">
+                        <h3><i class="fas fa-gamepad"></i> Rich interactivity</h3>
+                        <p>Three mini games: Rock-Paper-Scissors, Guess the Number & Memory Match. Touch, feed, clean
+                            and play — your pet reacts with an intelligent mood system.</p>
+                    </div>
+                    <div class="feature-block">
+                        <h3><i class="fas fa-cloud-upload-alt"></i> Seamless sync</h3>
+                        <p>iCloud document backup keeps your data safe. Real‑time sync across iPhone & Apple Watch.
+                            Intelligent conflict resolution across multiple devices.</p>
+                    </div>
+                    <div class="feature-block">
+                        <h3><i class="fas fa-heart"></i> Workout = pet food</h3>
+                        <p>Walk, run, or hit the gym — every active move turns into food for your digital buddy. Stay
+                            motivated, crush goals, raise a happy companion.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Extra interactive quote -->
+            <div class="quote">
+                <p>“Your fitness data becomes the life force of a loyal Tamagotchi friend.<br> Move more, play together
+                    — fitness has never been this fun.”</p>
+                <div style="margin-top: 12px;"><i class="fas fa-apple"></i> <i class="fas fa-apple-alt"
+                        style="margin:0 4px"></i> iPhone + iWatch ready</div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p><i class="fas fa-paw"></i> Fitness Pet — where every step feeds the joy. © 2025 · Made for active
+                creators</p>
+            <p style="margin-top: 8px; font-size: 0.7rem;">Coming soon on App Store · Stay fit, raise a digital buddy 🐕
+            </p>
+        </div>
+    </footer>
+
+    <!-- simple script to allow video play/poster interaction, play inline -->
+    <script>
+        (function () {
+            const video = document.getElementById('promoVideo');
+            if (video) {
+                // optional: add click to play/pause for better UX
+                const videoContainer = video.closest('.video-wrapper');
+                if (videoContainer) {
+                    videoContainer.style.cursor = 'pointer';
+                    videoContainer.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        if (video.paused) {
+                            video.play().catch(e => console.log("autoplay blocked, user gesture needed"));
+                        } else {
+                            video.pause();
+                        }
+                    });
+                }
+                // ensure poster works and video controls are minimal but we use tap to play
+                video.controls = false;
+                // add small hint?
+                const labelDiv = document.querySelector('.video-label');
+                if (labelDiv && video) {
+                    const updateText = () => {
+                        if (!video.paused) labelDiv.innerHTML = '<i class="fas fa-pause-circle"></i> Tap video to pause';
+                        else labelDiv.innerHTML = '<i class="fas fa-play-circle"></i> Tap to preview · 886x1920';
+                    };
+                    video.addEventListener('play', updateText);
+                    video.addEventListener('pause', updateText);
+                    updateText();
+                }
+            }
+            // fallback for images if not found: but keep clean
+            const imgs = document.querySelectorAll('.media-card img');
+            imgs.forEach(img => {
+                img.addEventListener('error', function () {
+                    // gentle fallback: keep alt visible but not intrusive
+                    if (!this.getAttribute('data-fallback')) {
+                        this.style.opacity = '0.7';
+                        this.style.background = '#F3EFE5';
+                        this.alt = this.alt + ' (image pending)';
+                        this.setAttribute('data-fallback', 'true');
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>
