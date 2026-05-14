@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>EasyCalc Support · Apple Watch & iPhone Calculator</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f5f9;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            color: #1e2a3e;
+            line-height: 1.5;
+            padding: 2rem 1.25rem;
+        }
+
+        .support-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 36px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+        }
+
+        .support-header {
+            background: linear-gradient(135deg, #101f2c 0%, #1b3b4f 100%);
+            padding: 2rem 2rem 1.8rem 2rem;
+            color: white;
+        }
+
+        .badge-watch {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.3px;
+        }
+
+        .support-header h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .support-header p {
+            font-size: 1rem;
+            opacity: 0.85;
+            max-width: 85%;
+        }
+
+        .support-nav {
+            background: white;
+            padding: 0.75rem 2rem;
+            border-bottom: 1px solid #e9edf2;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            font-weight: 500;
+        }
+
+        .support-nav a {
+            text-decoration: none;
+            color: #2c5a74;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 0.5rem;
+        }
+
+        .support-nav a:hover {
+            border-bottom-color: #2c8c6e;
+            color: #1c4e66;
+        }
+
+        .content {
+            padding: 2rem 2rem 2.2rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 2.6rem;
+            scroll-margin-top: 1rem;
+        }
+
+        .section h2 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #0f3b4b;
+            border-left: 5px solid #3ba88a;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 1.2rem 0 0.5rem 0;
+            color: #1e556f;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.2rem;
+            margin: 1rem 0 1.2rem 0;
+        }
+
+        .feature-card {
+            background: #fafdff;
+            border: 1px solid #e4ebf2;
+            border-radius: 24px;
+            padding: 1rem 1.2rem;
+            transition: all 0.2s;
+        }
+
+        .feature-card strong {
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 0.4rem;
+            color: #174d66;
+        }
+
+        .feature-card span {
+            font-size: 0.9rem;
+            color: #2f4d64;
+            line-height: 1.4;
+        }
+
+        /* Screenshot Gallery Styles — optimized for 416x496 aspect ratio (approx 0.84) */
+        .gallery {
+            margin: 1rem 0 1.8rem 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .gallery-item {
+            background: #f8fafc;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #e2eaf1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 28px -8px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Image container with fixed aspect ratio to match 416x496 */
+        .gallery-img-wrapper {
+            width: 100%;
+            position: relative;
+            background: #f5f7fb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 416 / 496;
+            /* exactly matches 416 × 496 */
+            overflow: hidden;
+        }
+
+        .gallery-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: transform 0.2s;
+        }
+
+        .gallery-caption {
+            padding: 0.7rem 0.6rem 0.8rem;
+            font-size: 0.75rem;
+            text-align: center;
+            color: #2c5f7a;
+            font-weight: 500;
+            background: white;
+            border-top: 1px solid #eef2f8;
+            letter-spacing: 0.2px;
+        }
+
+        /* Lightbox modal for full-size preview - respects original ratio */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 85%;
+            width: auto;
+            height: auto;
+            border-radius: 28px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            background: #fff;
+            padding: 6px;
+            object-fit: contain;
+            /* preserve original aspect ratio */
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            color: white;
+            font-size: 2.2rem;
+            font-weight: 300;
+            font-family: monospace;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.6);
+            width: 46px;
+            height: 46px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .close-lightbox:hover {
+            background: #2c8c6e;
+            transform: scale(1.02);
+        }
+
+        .faq-item {
+            background: #f9fbfe;
+            border-radius: 20px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 0.9rem;
+            border-left: 3px solid #8fc1b0;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #1c5b77;
+            margin-bottom: 0.4rem;
+        }
+
+        .faq-answer {
+            color: #2b485f;
+            font-size: 0.92rem;
+        }
+
+        ul,
+        .plain-list {
+            margin: 0.75rem 0 0.75rem 1.5rem;
+            color: #2b4d65;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .contact-card {
+            background: #eef3fa;
+            border-radius: 28px;
+            padding: 1.2rem 1.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .contact-email {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .contact-email a {
+            color: #1d6f4f;
+            text-decoration: none;
+            border-bottom: 1px solid #abd0c0;
+        }
+
+        .footer {
+            background: #f8fafd;
+            border-top: 1px solid #e6ecf2;
+            padding: 1.2rem 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #5f7c97;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: 0;
+            height: 1px;
+            background: #e2e9f0;
+        }
+
+        .watch-badge {
+            background: #eef2fc;
+            border-radius: 100px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #236544;
+            display: inline-block;
+        }
+
+        @media (max-width: 680px) {
+            body {
+                padding: 1rem;
+            }
+
+            .support-header {
+                padding: 1.5rem;
+            }
+
+            .support-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .support-header p {
+                max-width: 100%;
+            }
+
+            .support-nav {
+                padding: 0.7rem 1.2rem;
+                gap: 1rem;
+                overflow-x: auto;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .section h2 {
+                font-size: 1.4rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 1rem;
+            }
+
+            .gallery-caption {
+                font-size: 0.7rem;
+                padding: 0.5rem;
+            }
+        }
+
+        /* subtle loading effect */
+        .gallery-img-wrapper img {
+            background: #eef2f5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="support-container">
+        <div class="support-header">
+            <div class="badge-watch">
+                ⌚️ Apple Watch · iPhone · No Data Collection
+            </div>
+            <h1>EasyCalc Support</h1>
+            <p>Your go‑to resource for the simplest, fastest calculator on iPhone and Apple Watch. Everything you need
+                to calculate, split bills, apply discounts, and manage daily math — all with privacy at its core.</p>
+        </div>
+
+        <div class="support-nav">
+            <a href="#features">Features</a>
+            <a href="#watch">Apple Watch Guide</a>
+            <a href="#gallery">Screenshots</a>
+            <a href="#history">History & Records</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact Team</a>
+        </div>
+
+        <div class="content">
+            <!-- FEATURES SECTION -->
+            <div id="features" class="section">
+                <h2>⚡️ Everything you need, nothing you don’t</h2>
+                <p>EasyCalc is built for speed and clarity — whether you're on your wrist or phone. No ads, no tracking,
+                    just pure calculations.</p>
+                <div class="feature-grid">
+                    <div class="feature-card"><strong>➕ Basic & Fast</strong><span>Addition, subtraction,
+                            multiplication, division — big buttons made for quick taps. Instant results.</span></div>
+                    <div class="feature-card"><strong>🧾 Tip Calculator</strong><span>Dining out? Enter bill amount and
+                            choose tip percentage. EasyCalc shows total with tip instantly.</span></div>
+                    <div class="feature-card"><strong>👥 Bill Split</strong><span>Split the check between friends or
+                            family. Just set total and number of people — fair share in a tap.</span></div>
+                    <div class="feature-card"><strong>🏷️ Discount & Percentage</strong><span>Sales made simple. Enter
+                            original price and discount % to see final price. Perfect for smart shopping.</span></div>
+                    <div class="feature-card"><strong>📚 Homework Helper</strong><span>Students love EasyCalc for quick
+                            arithmetic, percentages, and formula checks — right on their Apple Watch.</span></div>
+                    <div class="feature-card"><strong>💰 Everyday Budget & Finance</strong><span>Track daily expenses,
+                            add totals, manage your budget on the fly without pulling out your phone.</span></div>
+                    <div class="feature-card"><strong>🕘 Historical Record</strong><span>Never lose a calculation! Your
+                            past calculations are saved. Tap any historical formula to reuse or review it.</span></div>
+                    <div class="feature-card"><strong>🔁 Memory Functions (M+, M-, MR, MC)</strong><span>Store
+                            intermediate totals, recall when needed, clear memory — ideal for multi-step
+                            calculations.</span></div>
+                    <div class="feature-card"><strong>📱 Clean & Clear Design</strong><span>No clutter, no confusing
+                            scientific modes. Just the essentials you need every day.</span></div>
+                    <div class="feature-card"><strong>🔒 100% Private</strong><span>Zero data collection. No analytics,
+                            no sign‑up, no tracking. Works entirely offline.</span></div>
+                </div>
+                <p>✨ <strong>EasyCalc for Apple Watch</strong> – glances, complications, and quick access right from
+                    your wrist. No need to reach for your iPhone when you're at a restaurant, grocery store, or
+                    classroom.</p>
+            </div>
+
+            <!-- APP SCREENSHOT GALLERY (6 IMAGES) — Exact 416x496 ratio -->
+            <div id="gallery" class="section">
+                <h2>📸 App preview</h2>
+                <p>See EasyCalc in action — clean interface, essential tools, and Apple Watch integration. Tap any
+                    screenshot to zoom.</p>
+                <div class="gallery">
+                    <div class="gallery-grid" id="screenshot-grid">
+                        <!-- 6 images will be injected via JS: 1.PNG to 6.PNG, respecting 416x496 ratio -->
+                    </div>
+                    <p style="font-size: 0.75rem; margin-top: 0.9rem; color: #5d7f99;">*Screenshots from EasyCalc
+                        (actual size 416 × 496). Perfectly optimized for clarity.</p>
+                </div>
+            </div>
+
+            <!-- APPLE WATCH INTEGRATION -->
+            <div id="watch" class="section">
+                <h2>⌚️ Apple Watch experience</h2>
+                <p>EasyCalc is designed exclusively for watchOS and iPhone. All features are optimized for the small
+                    screen — large buttons, haptic feedback, and smart layout.</p>
+                <ul>
+                    <li><strong>Complication support</strong> – Add EasyCalc to your watch face to launch the calculator
+                        instantly.</li>
+                    <li><strong>Standalone on Watch</strong> – Works without your phone nearby (Wi-Fi/cellular optional,
+                        but no internet required).</li>
+                    <li><strong>Tip & Split on wrist</strong> – Perfect for restaurant bills: calculate tip and split
+                        without pulling out your phone.</li>
+                    <li><strong>Discounts on the go</strong> – Scan a sale price, input percentage, and see what you’ll
+                        actually pay.</li>
+                    <li><strong>Historical sync via iCloud</strong> – (Optional) Your calculation history stays in sync
+                        across iPhone and Apple Watch using your private iCloud account; we never see that data.</li>
+                </ul>
+                <div style="background: #eef5f0; border-radius: 20px; padding: 0.8rem 1.2rem; margin-top: 0.8rem;">
+                    💡 <strong>Pro tip:</strong> Use the “History” button on your watch to quickly reuse a previous
+                    calculation. Tap any past formula (e.g., “15% tip on $48.50”) to load it instantly.
+                </div>
+            </div>
+
+            <!-- HISTORICAL RECORD & TAP TO REUSE -->
+            <div id="history" class="section">
+                <h2>📜 Historical Record & Smart Recall</h2>
+                <p>EasyCalc keeps a local log of all calculations you perform, sorted from newest to oldest. It’s more
+                    than just a list — it actually helps you work faster.</p>
+                <ul>
+                    <li><strong>Tap to reuse:</strong> In the history screen, tap any previous calculation (e.g., “23 ×
+                        4.5 = 103.5”). The formula loads directly into the main calculator, so you can edit or
+                        recalculate.</li>
+                    <li><strong>Clear history option:</strong> Delete individual records or wipe the entire history —
+                        all private and on-device.</li>
+                    <li><strong>No cloud shadow:</strong> History stays on your device unless you enable iCloud sync,
+                        which is end‑to‑end encrypted and never accessible by MingMing Team.</li>
+                    <li><strong>Works offline 100%:</strong> Even without internet, your history is always there.</li>
+                </ul>
+                <p>This makes EasyCalc perfect for iterative budgeting, reusing complex discount chains, or just
+                    double-checking yesterday’s math.</p>
+            </div>
+
+            <!-- FAQ SECTION -->
+            <div id="faq" class="section">
+                <h2>❓ Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">Does EasyCalc collect any personal data?</div>
+                    <div class="faq-answer">Absolutely none. EasyCalc does not collect names, emails, location, or usage
+                        stats. There are no third-party analytics, no crash reporting tools that identify you, and no
+                        ads. Your calculations remain 100% private on your device.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is the Apple Watch version free? Does it have ads?</div>
+                    <div class="faq-answer">Yes, EasyCalc is completely free on both iPhone and Apple Watch. There are
+                        zero ads, no in-app purchases, and no subscriptions — just a clean utility we built because we
+                        love simple tools.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How does the history tap‑to‑load work?</div>
+                    <div class="faq-answer">Open the “History” screen. You’ll see a list of all past equations with
+                        results. Tap any entry — the calculator screen will immediately display that expression, and you
+                        can edit numbers, change operators, or recalculate. Works like a charm for repeated tasks.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Does EasyCalc support percentage and discount calculations?</div>
+                    <div class="faq-answer">Yes! Use the % button for quick percentages. For discounts: enter original
+                        price, press “−”, enter discount percentage, then press “%” and “=” to get the final price. Or
+                        use dedicated discount mode in the tip/split section. Super intuitive.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I use memory functions (M+, M-, MR, MC)?</div>
+                    <div class="faq-answer">Absolutely. Store any displayed number into memory with M+, add to memory
+                        with M+, recall with MR, and clear memory with MC. Perfect for complex running totals, invoices,
+                        or expense tracking.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Why do I need EasyCalc when iPhone has a built-in calculator?</div>
+                    <div class="faq-answer">Our app is optimized for one‑handed use, includes a tip & splitter, full
+                        history with tap‑to‑reuse, and works seamlessly on Apple Watch with complications. Plus, a clean
+                        ad‑free interface with memory buttons always visible.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What about iCloud sync? Do you see my history?</div>
+                    <div class="faq-answer">Optional iCloud sync uses Apple’s private CloudKit. Only you can access your
+                        data across devices. MingMing Team has no ability to read your history. Sync can be turned off
+                        anytime in settings.</div>
+                </div>
+            </div>
+
+            <!-- TROUBLESHOOTING & SUPPORT TIPS -->
+            <div class="section">
+                <h2>🛠️ Quick troubleshooting</h2>
+                <ul>
+                    <li><strong>History not showing?</strong> Ensure you’ve performed calculations after installing.
+                        History is saved automatically. Restart the app if needed.</li>
+                    <li><strong>Apple Watch complication missing?</strong> After installing, go to Watch app → Face
+                        Gallery → add EasyCalc complication to your active watch face.</li>
+                    <li><strong>Buttons feel unresponsive?</strong> Force-quit the app and reopen, or restart your
+                        watch/iPhone. The app is extremely lightweight but clean install may help.</li>
+                    <li><strong>Split bill seems off?</strong> Check that you entered number of people correctly. Split
+                        calculates total divided equally (including tip if applied).</li>
+                    <li><strong>Need to clear memory?</strong> Tap “MC” to reset memory register.</li>
+                </ul>
+                <p>If problems persist, our support team is just an email away — see contact section below.</p>
+            </div>
+
+            <!-- MORE DETAILS: PERFECT FOR ANY SCENARIO -->
+            <div class="section">
+                <h2>💡 Perfect for real life</h2>
+                <div class="feature-grid">
+                    <div class="feature-card"><strong>🛍️ Shopping & discounts</strong><span>Calculate sale prices
+                            instantly. With history, compare discounts across stores.</span></div>
+                    <div class="feature-card"><strong>🍽️ Dining out & tips</strong><span>Use tip + split together —
+                            know exactly what each person pays including tip.</span></div>
+                    <div class="feature-card"><strong>📚 Math homework</strong><span>Students can verify arithmetic,
+                            percentages, and long calculations; history helps track work.</span></div>
+                    <div class="feature-card"><strong>🏦 Monthly budget</strong><span>Add expenses with memory, then
+                            split shared costs with roommates.</span></div>
+                </div>
+                <p style="margin-top: 0.5rem;">EasyCalc is trusted by thousands who need a fast, trustworthy calculator
+                    without unnecessary complexity. We built it for ourselves, and we’re proud to share it with you.</p>
+            </div>
+
+        </div> <!-- end content -->
+
+        <div class="footer">
+            © 2025 MingMing Team. All rights reserved.<br>
+            EasyCalc — Calculate Anything, Effortlessly. Designed for Apple Watch & iPhone with zero compromises on
+            privacy.
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="Full size screenshot">
+    </div>
+
+    <script>
+        // Generate gallery for exactly 6 images: 1.PNG, 2.PNG ... 6.PNG
+        // Each image maintains 416 × 496 aspect ratio via CSS wrapper.
+        const imageCount = 6;
+        const galleryGrid = document.getElementById('screenshot-grid');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeLightbox = document.querySelector('.close-lightbox');
+
+        // Rich captions matching likely EasyCalc screens (iPhone & Watch)
+        const captions = [
+            "Main calculator · Large buttons, clean digits",
+            "Tip + split screen · Effortless bill sharing",
+            "History panel · Tap any formula to reuse",
+            "Apple Watch interface · Quick calculations on wrist",
+            "Memory & percentage · M+, MR, discount mode",
+            "Discount calculator · Save money while shopping"
+        ];
+
+        for (let i = 1; i <= imageCount; i++) {
+            const imgName = `${i}.PNG`;
+            const captionText = captions[i - 1] || `EasyCalc screen ${i} · 416×496`;
+
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+
+            // Wrapper for precise aspect ratio (416x496)
+            const imgWrapper = document.createElement('div');
+            imgWrapper.className = 'gallery-img-wrapper';
+
+            const img = document.createElement('img');
+            img.src = imgName;
+            img.alt = `EasyCalc screenshot ${i} — ${captionText}`;
+            img.loading = 'lazy';
+
+            // Graceful fallback if image fails to load (shows subtle placeholder preserving ratio)
+            img.onerror = function () {
+                this.style.objectFit = 'contain';
+                this.style.padding = '12px';
+                this.style.backgroundColor = '#f4f9fe';
+                this.src = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'416\' height=\'496\' viewBox=\'0 0 416 496\'%3E%3Crect width=\'416\' height=\'496\' fill=\'%23eef3fc\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%237b99b5\' font-size=\'14\' font-family=\'monospace\'%3E📸 EasyCalc%3C/text%3E%3C/svg%3E';
+            };
+
+            imgWrapper.appendChild(img);
+
+            const captionDiv = document.createElement('div');
+            captionDiv.className = 'gallery-caption';
+            captionDiv.textContent = captionText;
+
+            galleryItem.appendChild(imgWrapper);
+            galleryItem.appendChild(captionDiv);
+
+            // Lightbox trigger on click
+            galleryItem.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const targetImg = galleryItem.querySelector('img');
+                if (targetImg && targetImg.src) {
+                    lightboxImg.src = targetImg.src;
+                    lightbox.classList.add('active');
+                }
+            });
+
+            galleryGrid.appendChild(galleryItem);
+        }
+
+        // Lightbox close handlers
+        function closeLightboxFn() {
+            lightbox.classList.remove('active');
+            lightboxImg.src = '';
+        }
+
+        closeLightbox.addEventListener('click', closeLightboxFn);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightboxFn();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightboxFn();
+            }
+        });
+    </script>
+</body>
+
+</html>

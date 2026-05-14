@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>EasyCalc · Privacy Policy</title>
+    <!-- Google Fonts & simple reset for clean typography -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f7fc;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            color: #1a2c3e;
+            line-height: 1.5;
+            padding: 2rem 1.5rem;
+        }
+
+        .policy-container {
+            max-width: 880px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05), 0 4px 8px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        /* header with subtle brand */
+        .policy-header {
+            padding: 2rem 2rem 1rem 2rem;
+            border-bottom: 1px solid #eef2f8;
+            background: #ffffff;
+        }
+
+        .app-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #f0f4fe;
+            padding: 6px 14px;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #1f5f8f;
+            margin-bottom: 1.2rem;
+        }
+
+        .app-badge span {
+            font-size: 1.2rem;
+        }
+
+        h1 {
+            font-size: 2.1rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: #0b2b3b;
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated {
+            font-size: 0.85rem;
+            color: #5b6e8c;
+            border-left: 3px solid #8bb9e0;
+            padding-left: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        /* main content */
+        .policy-content {
+            padding: 1.8rem 2rem 2.5rem 2rem;
+        }
+
+        .policy-section {
+            margin-bottom: 2rem;
+            scroll-margin-top: 1rem;
+        }
+
+        .policy-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0f3b4f;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .policy-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 1rem 0 0.4rem 0;
+            color: #1e4a6b;
+        }
+
+        .policy-section p {
+            margin-bottom: 0.8rem;
+            color: #2c3f4f;
+            font-weight: 400;
+        }
+
+        .policy-section ul,
+        .feature-list {
+            list-style: none;
+            padding-left: 0.25rem;
+            margin: 0.8rem 0 1rem 0;
+        }
+
+        .policy-section li {
+            margin-bottom: 0.65rem;
+            padding-left: 1.6rem;
+            position: relative;
+            font-weight: 400;
+            color: #2c3f4f;
+        }
+
+        .policy-section li strong {
+            font-weight: 600;
+            color: #0f3b4f;
+        }
+
+        /* custom check / lock icons */
+        .policy-section li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2c8c5e;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .privacy-highlight {
+            background: #f0f9f4;
+            border-left: 4px solid #2c8c5e;
+            padding: 1rem 1.2rem;
+            border-radius: 16px;
+            margin: 1.2rem 0;
+        }
+
+        .badge-icon {
+            background: #eef2ff;
+            border-radius: 40px;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #235b8c;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        hr {
+            margin: 1.2rem 0;
+            border: none;
+            height: 1px;
+            background: #e6edf4;
+        }
+
+        .contact-box {
+            background: #fafcff;
+            border: 1px solid #e2ebf3;
+            border-radius: 24px;
+            padding: 1rem 1.5rem;
+            margin-top: 1.2rem;
+        }
+
+        .contact-box p {
+            margin-bottom: 0.3rem;
+        }
+
+        .footer-copyright {
+            border-top: 1px solid #eef2f8;
+            padding: 1.2rem 2rem 1.5rem 2rem;
+            background: #ffffff;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #5f7d9c;
+            letter-spacing: 0.2px;
+        }
+
+        a {
+            color: #2c6e9e;
+            text-decoration: none;
+            border-bottom: 1px dotted #b9d0e7;
+        }
+
+        a:hover {
+            color: #0f4b6e;
+            border-bottom: 1px solid #2c6e9e;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem;
+            }
+
+            .policy-header,
+            .policy-content {
+                padding-left: 1.3rem;
+                padding-right: 1.3rem;
+            }
+
+            h1 {
+                font-size: 1.7rem;
+            }
+
+            .policy-section h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="policy-container">
+        <div class="policy-header">
+            <div class="app-badge">
+                <span>🧮</span> EasyCalc · Simple & Private
+            </div>
+            <h1>Privacy Policy</h1>
+            <div class="last-updated">
+                Last Updated: June 22, 2025
+            </div>
+        </div>
+
+        <div class="policy-content">
+            <!-- 1. Introduction -->
+            <div class="policy-section" id="intro">
+                <h2>1. Introduction</h2>
+                <p>EasyCalc ("the App") is a straightforward calculator application developed by <strong>MingMing
+                        Team</strong>. Your privacy is not an afterthought — it is built into the core design. This
+                    Privacy Policy explains exactly how we handle (or more importantly, how we do NOT handle) your
+                    information. By using EasyCalc, you agree to the terms described here.</p>
+                <div class="privacy-highlight">
+                    <span style="font-weight:600;">✨ Zero data philosophy:</span> No sign‑ups, no cloud sync, no
+                    analytics. Just a calculator that works entirely on your device.
+                </div>
+            </div>
+
+            <!-- 2. No Data Collection -->
+            <div class="policy-section" id="nocollection">
+                <h2>2. No Data Collection</h2>
+                <p>EasyCalc is built to respect your digital life from the ground up. We never collect, store, or
+                    transmit any personal information.</p>
+                <ul>
+                    <li><strong>🔒 No personal data</strong> — We do not ask for your name, email address, phone number,
+                        location, or any identifying information.</li>
+                    <li><strong>🔒 No accounts</strong> — The App requires no login, profile creation, or registration.
+                    </li>
+                    <li><strong>🔒 100% local processing</strong> — Every calculation, every digit, every result stays
+                        on your device. No data is sent to any server or third‑party service.</li>
+                    <li><strong>🔒 No cloud backup</strong> — We do not offer cloud storage of history or preferences,
+                        because that would require moving data outside your control. Everything remains offline.</li>
+                </ul>
+                <p>In short: the only place your numbers ever exist is your own screen, and once you close the App,
+                    nothing is retained beyond what the operating system caches locally without any external
+                    transmission.</p>
+            </div>
+
+            <!-- 3. No Tracking or Analytics -->
+            <div class="policy-section" id="notracking">
+                <h2>3. No Tracking or Analytics</h2>
+                <p>We believe that a calculator does not need to spy on how you use it. Therefore:</p>
+                <ul>
+                    <li><strong>📊 No cookies</strong> — We do not use web cookies, local storage trackers, or any
+                        cross-session identifiers.</li>
+                    <li><strong>📊 No analytics SDKs</strong> — EasyCalc contains no Google Analytics, Firebase,
+                        Mixpanel, or any other usage tracking framework.</li>
+                    <li><strong>📊 No behavioral monitoring</strong> — We never track button taps, session duration,
+                        crash logs (unless automatically handled by the OS with anonymized diagnostics that you control
+                        via system settings). Even then, we do not receive or associate data with individuals.</li>
+                    <li><strong>📊 No third-party tracking libraries</strong> — The app is built without advertising or
+                        tracking software.</li>
+                </ul>
+                <p>Your usage pattern is yours alone. We don’t know how often you calculate tips, solve equations, or
+                    simply open the app — because that information never reaches us.</p>
+            </div>
+
+            <!-- 4. Device Permissions -->
+            <div class="policy-section" id="permissions">
+                <h2>4. Device Permissions</h2>
+                <p>EasyCalc requests <strong>zero special permissions</strong>. The App does not require access to:</p>
+                <ul>
+                    <li>Camera or microphone</li>
+                    <li>Contacts or calendar</li>
+                    <li>Location services (GPS)</li>
+                    <li>Files or storage (unless strictly required by OS for basic app functionality, but EasyCalc does
+                        not read/write personal documents; any settings are local and sandboxed)</li>
+                    <li>Bluetooth or NFC</li>
+                </ul>
+                <p>The only “permission” EasyCalc relies on is the ability to run and display buttons — that is a
+                    standard system interaction. The app works completely offline and does not need internet
+                    connectivity.</p>
+                <div class="privacy-highlight">
+                    💡 <strong>Offline by design:</strong> You can put your device in airplane mode, and EasyCalc
+                    functions exactly the same. No server handshake, no “phone home” behavior.
+                </div>
+            </div>
+
+            <!-- 5. Children’s Privacy -->
+            <div class="policy-section" id="children">
+                <h2>5. Children’s Privacy</h2>
+                <p>EasyCalc is a simple utility tool that can be used by anyone, but it does <strong>not</strong>
+                    knowingly target children under the age of 13 (“Children”). We do not collect personal information
+                    from any user — regardless of age. Because we collect no data, there is no risk of inadvertently
+                    gathering data from children. Parents and guardians can rest assured that the app has no tracking,
+                    no social features, and no data sharing.</p>
+                <p>If you believe a child has provided any form of data to us (which is technically impossible given the
+                    app's design), please contact us, and we will ensure no residual concerns remain. However, the
+                    architecture of EasyCalc makes data collection infeasible.</p>
+            </div>
+
+            <!-- 6. Policy Changes -->
+            <div class="policy-section" id="changes">
+                <h2>6. Policy Changes</h2>
+                <p>We may update this Privacy Policy occasionally to reflect clarifications or to meet evolving legal
+                    requirements. Any changes will be posted on this page with a revised “Last Updated” date at the top.
+                    Since the app collects no data, updates to the policy will never retroactively change how your
+                    information was handled — there is simply no data to mishandle. Your continued use of EasyCalc after
+                    any modification constitutes acceptance of the updated policy.</p>
+                <p>We encourage you to review this document periodically. For significant changes, we may provide an
+                    in-app notice (e.g., when a major version updates) but you can always find the latest version here.
+                </p>
+            </div>
+
+            <!-- Compliance Recap (Informative / optional section) -->
+            <div class="policy-section" id="compliance">
+                <h2>Compliance &amp; Standards</h2>
+                <p>EasyCalc’s privacy design aligns with major global frameworks and store requirements:</p>
+                <ul>
+                    <li><strong>✅ GDPR / CCPA ready</strong> — Explicit “no data collection” declaration means no
+                        consent pop-ups, no data subject requests needed because no data exists.</li>
+                    <li><strong>✅ Apple App Store &amp; Google Play</strong> — Covers mandatory sections: data use,
+                        tracking, permissions, and safety labels. The App qualifies for “Data Not Collected” status.
+                    </li>
+                    <li><strong>✅ COPPA compliant</strong> — Because no personal information is collected from anyone,
+                        including children under 13.</li>
+                    <li><strong>✅ Zero third-party sharing</strong> — We do not sell, trade, or transfer any information
+                        (there’s nothing to transfer).</li>
+                </ul>
+                <p>This policy is transparent, written in plain English, and serves as a binding statement of our
+                    privacy promises.</p>
+            </div>
+            <hr />
+            <div
+                style="font-size: 0.85rem; color: #3e5a76; background: #f7faff; border-radius: 20px; padding: 0.8rem 1rem; margin-top: 0.5rem;">
+                ⚙️ <strong>Technical assurance</strong> — EasyCalc does not include any network permission on Android
+                (no INTERNET) and on iOS it does not use any networking APIs. The app is sandboxed and verified during
+                development to contain zero data collection frameworks.
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            © 2025 MingMing Team. All rights reserved.<br>
+            EasyCalc — simply private, simply functional.
+        </div>
+    </div>
+</body>
+
+</html>
