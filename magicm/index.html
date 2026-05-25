@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>MagicM - AI Photo Eraser | Remove Anything Instantly</title>
+    <!-- Google Fonts for clean typography -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fefefe;
+            color: #1a1e2b;
+            line-height: 1.4;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* header / nav */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2b2d42, #4a4e69);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            background: none;
+            color: #7b2cbf;
+            font-weight: 800;
+        }
+
+        .price-badge {
+            background: #e9ecef;
+            padding: 10px 20px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+        }
+
+        .price-badge i {
+            color: #e63946;
+            margin-right: 6px;
+        }
+
+        .savings {
+            background: #2b9348;
+            color: white;
+            border-radius: 40px;
+            padding: 4px 14px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 12px;
+        }
+
+        /* hero */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 60px 0 40px;
+        }
+
+        .hero-text {
+            flex: 1.2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            background: linear-gradient(145deg, #111, #3c096c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2b2d42;
+            margin-bottom: 16px;
+        }
+
+        .hero-text .description {
+            font-size: 1.1rem;
+            color: #4a4e69;
+            margin-bottom: 32px;
+            max-width: 550px;
+        }
+
+        .price-compare {
+            background: #f1f3f5;
+            border-radius: 28px;
+            padding: 18px 24px;
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 18px;
+            margin-bottom: 32px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .our-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .our-price small {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .competitor-price {
+            font-size: 1.4rem;
+            color: #6c757d;
+            text-decoration: line-through;
+            font-weight: 500;
+        }
+
+        .discount-badge {
+            background: #d00000;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .cta-button {
+            background: #000;
+            color: white;
+            border: none;
+            padding: 14px 36px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button:hover {
+            background: #2b2d42;
+            transform: scale(1.02);
+        }
+
+        .hero-visual {
+            flex: 0.9;
+            display: flex;
+            justify-content: center;
+        }
+
+        .demo-phone {
+            max-width: 280px;
+            border-radius: 44px;
+            box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+
+        .demo-phone img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Feature grid */
+        .features {
+            padding: 80px 0 40px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #5a626e;
+            max-width: 680px;
+            margin: 0 auto 56px auto;
+            font-size: 1.1rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            padding: 28px 24px;
+            border-radius: 32px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.05);
+            transition: 0.2s;
+            border: 1px solid #f0f0f0;
+        }
+
+        .feature-card i {
+            font-size: 2.2rem;
+            background: #e9ecef;
+            padding: 12px;
+            border-radius: 24px;
+            color: #3c096c;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #4a4e69;
+            line-height: 1.5;
+        }
+
+        /* advantages banner */
+        .advantages {
+            background: #f8f9fc;
+            border-radius: 48px;
+            padding: 48px 40px;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .advantage-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 36px;
+            margin-top: 32px;
+        }
+
+        .advantage-item {
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            padding: 12px 24px;
+            border-radius: 60px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .advantage-item i {
+            color: #2b9348;
+            font-size: 1.4rem;
+        }
+
+        /* SCREENSHOT GALLERY - 5 images, 1242x2688 ratio but responsive */
+        .screenshots {
+            padding: 40px 0 60px;
+        }
+
+        .screenshot-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px;
+            margin-top: 32px;
+        }
+
+        .screenshot-card {
+            flex: 1 1 220px;
+            max-width: 260px;
+            background: #fff;
+            border-radius: 36px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.25s ease;
+            overflow: hidden;
+            border: 1px solid #eef2f5;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 1242 / 2688;
+            /* maintains exact proportion */
+            object-fit: cover;
+            background: #f2eef5;
+        }
+
+        .screenshot-label {
+            text-align: center;
+            padding: 12px 6px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            background: white;
+            color: #2c3e66;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        /* tutorial / footer CTA */
+        .final-cta {
+            text-align: center;
+            background: linear-gradient(145deg, #0f172a, #1a2639);
+            color: white;
+            padding: 70px 24px;
+            border-radius: 56px;
+            margin: 40px 0 60px;
+        }
+
+        .final-cta h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .final-cta .cta-button {
+            background: #f7b801;
+            color: #0f172a;
+            margin-top: 24px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .final-cta .cta-button:hover {
+            background: #ffcd4a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 32px 0 48px;
+            color: #6c757d;
+            font-size: 0.85rem;
+            border-top: 1px solid #dee2e6;
+        }
+
+        @media (max-width: 800px) {
+            .hero-text h1 {
+                font-size: 2.3rem;
+            }
+
+            .price-compare {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .screenshot-card {
+                max-width: 220px;
+            }
+        }
+
+        @media (max-width: 580px) {
+            .screenshot-grid {
+                gap: 16px;
+            }
+
+            .advantage-item {
+                font-size: 0.95rem;
+                padding: 8px 16px;
+            }
+        }
+
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Navigation -->
+        <div class="navbar">
+            <div class="logo">Magic<span>M</span> <i class="fas fa-magic" style="font-size: 1.4rem; color:#7b2cbf;"></i>
+            </div>
+            <div class="price-badge">
+                <i class="fas fa-tag"></i> Best Value • No Subscriptions
+                <span class="savings">Save 99.9%</span>
+            </div>
+        </div>
+
+        <!-- Hero Section with price highlight -->
+        <div class="hero">
+            <div class="hero-text">
+                <h1>MagicM – AI Photo Eraser. <br>Remove Anything, Instantly.</h1>
+                <div class="tagline">Say goodbye to distractions ✨</div>
+                <div class="description">
+                    Got unwanted people, pimples, power lines, or fences in your perfect shot?
+                    With MagicM, you don't need expensive software or complex editing skills.
+                    Just tap, mark, or brush – and watch distractions disappear like magic.
+                </div>
+                <!-- COMPETITOR PRICE COMPARISON – 99.9% cheaper than TouchRetouch -->
+                <div class="price-compare">
+                    <div>
+                        <span class="our-price">$2.99 <small>one-time</small></span>
+                        <div style="font-size: 0.8rem; color:#2b9348;"><i class="fas fa-check-circle"></i> Lifetime
+                            access</div>
+                    </div>
+                    <div>
+                        <span class="competitor-price">TouchRetouch </span>
+                        <div style="font-size: 0.75rem;">Competitor price</div>
+                    </div>
+                    <div class="discount-badge">
+                        <i class="fas fa-fire"></i> 99.9% cheaper
+                    </div>
+                </div>
+                <button class="cta-button"
+                    onclick="alert('✨ Download MagicM now – remove anything with AI! Available on App Store & Google Play.')">
+                    <i class="fab fa-apple"></i> Download MagicM <i class="fas fa-arrow-right"></i>
+                </button>
+                <p style="margin-top: 20px; font-size: 0.8rem;"><i class="fas fa-check-circle"
+                        style="color: #2b9348;"></i> No ads · No in-app purchases · Pro results</p>
+            </div>
+            <div class="hero-visual">
+                <div class="demo-phone">
+                    <!-- first screenshot as demo hero preview (1.png) -->
+                    <img src="1.png" alt="MagicM eraser demo before after"
+                        onerror="this.src='https://placehold.co/400x800?text=1.png+Preview'; console.warn('1.png not found, please place in local folder')">
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature highlights exactly as described -->
+        <div class="features">
+            <h2 class="section-title">Erase like magic, <br> with precision tools</h2>
+            <div class="section-sub">AI-driven editing that feels effortless — tap, lasso, or brush to vanish any
+                object.</div>
+            <div class="feature-grid">
+                <div class="feature-card"><i class="fas fa-hand-sparkles"></i>
+                    <h3>Object Removal Like Magic</h3>
+                    <p>One‑tap blemish remover for wrinkles, pimples, and skin imperfections. Brush for small objects,
+                        Lasso for large areas, Eraser for corrections. AI removes selected objects in seconds.</p>
+                </div>
+                <div class="feature-card"><i class="fas fa-charging-station"></i>
+                    <h3>Flexible Line Removal</h3>
+                    <p>Remove thick or thin lines – just trace or tap. Perfect for erasing power lines cluttering a
+                        beautiful sky.</p>
+                </div>
+                <div class="feature-card"><i class="fas fa-border-all"></i>
+                    <h3>Automatic Mesh Detection</h3>
+                    <p>Smart AI detects and removes fences, nets, or cages from wildlife or street photos – no manual
+                        line‑by‑line selection needed.</p>
+                </div>
+                <div class="feature-card"><i class="fas fa-clone"></i>
+                    <h3>Pixel‑to‑Pixel Cloning</h3>
+                    <p>Replicate, clone, or patch any area to fix distortions or remove watermarks – even on uniform
+                        backgrounds.</p>
+                </div>
+                <div class="feature-card"><i class="fas fa-vr-cardboard"></i>
+                    <h3>360° Photo Editing</h3>
+                    <p>Easily erase tripods or accidental people from 360° shots.</p>
+                </div>
+                <div class="feature-card"><i class="fas fa-graduation-cap"></i>
+                    <h3>Helpful Tutorials</h3>
+                    <p>Intuitive interface with pop‑ups, tooltips, and a full user guide – perfect for beginners.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advantages Banner (No subscriptions, No ads, No in-app purchases) -->
+        <div class="advantages">
+            <h3 style="font-size: 1.8rem; font-weight: 700;">Why MagicM is the ultimate choice</h3>
+            <div class="advantage-list">
+                <div class="advantage-item"><i class="fas fa-infinity"></i> No subscriptions</div>
+                <div class="advantage-item"><i class="fas fa-ban"></i> No ads</div>
+                <div class="advantage-item"><i class="fas fa-gem"></i> No in‑app purchases</div>
+                <div class="advantage-item"><i class="fas fa-magic"></i> Professional results, automatic healing</div>
+            </div>
+            <p style="margin-top: 32px; font-size: 1rem;">99.9% cheaper than TouchRetouch — get pro retouching for
+                pennies.</p>
+        </div>
+
+        <!-- 5 Screenshots gallery: local files 1.png to 5.png, exact ratio (1242x2688) -->
+        <div class="screenshots">
+            <h2 class="section-title">See MagicM in action</h2>
+            <div class="section-sub">Real results — erase people, objects, lines, and distractions with AI</div>
+            <div class="screenshot-grid">
+                <div class="screenshot-card">
+                    <img src="1.png" alt="MagicM screenshot 1 - object removal"
+                        onerror="this.src='https://placehold.co/400x865?text=1.png+Preview';">
+                    <div class="screenshot-label">Before / After ✨ Remove crowd</div>
+                </div>
+                <div class="screenshot-card">
+                    <img src="2.png" alt="MagicM screenshot 2 - line removal"
+                        onerror="this.src='https://placehold.co/400x865?text=2.png+Preview';">
+                    <div class="screenshot-label">Power lines erased</div>
+                </div>
+                <div class="screenshot-card">
+                    <img src="3.png" alt="MagicM screenshot 3 - fence removal"
+                        onerror="this.src='https://placehold.co/400x865?text=3.png+Preview';">
+                    <div class="screenshot-label">Mesh & fence detection</div>
+                </div>
+                <div class="screenshot-card">
+                    <img src="4.png" alt="MagicM screenshot 4 - blemish removal"
+                        onerror="this.src='https://placehold.co/400x865?text=4.png+Preview';">
+                    <div class="screenshot-label">One‑tap skin perfect</div>
+                </div>
+                <div class="screenshot-card">
+                    <img src="5.png" alt="MagicM screenshot 5 - cloning tool"
+                        onerror="this.src='https://placehold.co/400x865?text=5.png+Preview';">
+                    <div class="screenshot-label">Pixel‑to‑Pixel Cloning</div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 32px; font-size: 0.85rem; color:#4a4e69;"><i
+                    class="fas fa-mobile-alt"></i> Actual screenshots from MagicM AI Eraser — 1242x2688 quality</p>
+        </div>
+
+        <!-- Tutorials & download callout -->
+        <div class="final-cta">
+            <i class="fas fa-play-circle" style="font-size: 3rem; margin-bottom: 16px; opacity: 0.9;"></i>
+            <h2>Make every photo flawless</h2>
+            <p style="max-width: 600px; margin: 0 auto;">Download MagicM today and get pro-level retouching. No
+                subscriptions, no ads, and <strong>99.9% cheaper than TouchRetouch</strong>.</p>
+            <button class="cta-button"
+                onclick="alert('🚀 Download MagicM now – remove anything instantly. Available for iOS & Android.')">
+                <i class="fab fa-google-play"></i> Get MagicM <i class="fas fa-download"></i>
+            </button>
+            <div style="margin-top: 32px; font-size: 0.8rem;">✨ Helpful tutorials, tooltips, and interactive guide
+                included</div>
+        </div>
+
+        <footer>
+            <p><i class="far fa-copyright"></i> MagicM – AI Photo Eraser. Remove Anything Instantly. <br>
+                Price comparison based on TouchRetouch lifetime value. All trademarks property of their owners.</p>
+            <p style="margin-top: 8px;">📸 5 demonstration screenshots (1.png – 5.png) showcase true AI removal</p>
+        </footer>
+    </div>
+
+    <!-- Small note: local images must be placed in same folder as index.html. 1.png,2.png,3.png,4.png,5.png with 1242x2688 ratio. If missing, fallback placeholder appears -->
+</body>
+
+</html>
