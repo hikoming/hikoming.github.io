@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>TextGhost - Privacy Policy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: #f5f7fc;
+            color: #1c1e24;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05), 0 4px 8px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            padding: 2rem 1.8rem;
+        }
+
+        /* Header section with icon & identity */
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eef2f8;
+            padding-bottom: 1.6rem;
+        }
+
+        .icon-wrapper {
+            flex-shrink: 0;
+        }
+
+        .app-icon {
+            width: 70px;
+            height: 70px;
+            background: #f0f4fe;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .title-group h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #1C2E4A, #2C3E66);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .title-group .team {
+            font-size: 0.9rem;
+            color: #5b6e8c;
+            margin-top: 0.2rem;
+            font-weight: 500;
+        }
+
+        .effective-date {
+            background: #eef2fa;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin: 0.8rem 0 1rem 0;
+            color: #2c3e66;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 1.8rem 0 0.8rem 0;
+            color: #111827;
+            border-left: 4px solid #3b82f6;
+            padding-left: 0.8rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 1.2rem 0 0.5rem 0;
+            color: #1f2a44;
+        }
+
+        p {
+            margin: 0.75rem 0;
+            color: #2c3e50;
+        }
+
+        .highlight-card {
+            background: #f8fafd;
+            border-radius: 20px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border-left: 4px solid #10b981;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1rem 0 1.2rem;
+        }
+
+        .feature-badge {
+            background: #eef2ff;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1e3a8a;
+        }
+
+        ul, .list-styled {
+            margin: 0.8rem 0 0.8rem 1.5rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        hr {
+            margin: 1.5rem 0;
+            border: none;
+            border-top: 1px solid #e4e9f0;
+        }
+
+        .footer-note {
+            margin-top: 2.5rem;
+            padding-top: 1rem;
+            font-size: 0.75rem;
+            text-align: center;
+            color: #6c7a91;
+            border-top: 1px solid #eef2f8;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem;
+            }
+            .app-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            h2 {
+                font-size: 1.35rem;
+            }
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .privacy-badge {
+            background: #e6f7ec;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #0e6b2e;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- App identity: Icon + Name + Team -->
+    <div class="app-header">
+        <div class="icon-wrapper">
+            <div class="app-icon">
+                <!-- local icon.png (placed in same directory) -->
+                <img src="icon.png" alt="TextGhost App Icon" onerror="this.onerror=null; this.style.backgroundColor='#eef2ff'; this.parentElement.style.display='flex'; this.style.display='none';">
+            </div>
+        </div>
+        <div class="title-group">
+            <h1>TextGhost</h1>
+            <div class="team">MingMing Team</div>
+            <div class="privacy-badge" style="margin-top: 6px;">🔒 Zero Data Collection</div>
+        </div>
+    </div>
+
+    <div class="effective-date">
+        📄 Effective Date: May 28, 2026
+    </div>
+
+    <p><strong>TextGhost</strong> is committed to protecting your privacy. This Privacy Policy explains that <strong>TextGhost does not collect, store, or share any personal data or user content</strong>. All image processing, text recognition, and editing operations happen <strong>entirely on your device</strong>. By using TextGhost, you acknowledge and agree to the practices described in this policy.</p>
+
+    <!-- Core Privacy Promise -->
+    <div class="highlight-card">
+        <strong>🔐 Our Core Privacy Guarantee</strong><br>
+        ✅ No network requests — fully offline operation<br>
+        ✅ No user data collection of any kind<br>
+        ✅ No images or text are uploaded to any server<br>
+        ✅ All processing utilizes on‑device frameworks (Vision, Core Graphics, Accelerate)<br>
+        ✅ No third-party analytics, trackers, or crash reporting tools<br>
+        ✅ No personal identification information required
+    </div>
+
+    <!-- 1. INFORMATION WE DO NOT COLLECT -->
+    <h2>1. Information We Do NOT Collect</h2>
+    <p>TextGhost is designed from the ground up to be <strong>privacy-first</strong>. We never collect:</p>
+    <ul>
+        <li><strong>Personal Identifiable Information</strong> – such as your name, email address, phone number, or device ID.</li>
+        <li><strong>Images or Photos</strong> – the images you select from your album are never transmitted or stored outside your device. All editing stays local.</li>
+        <li><strong>Text Content</strong> – recognized text or any custom replacement text remains strictly on your iPhone/iPad.</li>
+        <li><strong>Usage Data</strong> – no analytics, session data, or telemetry about how you use features.</li>
+        <li><strong>Location, Contacts, or Camera</strong> – we request no access to location, contacts, or camera (only photo library access for picking images, which is controlled by iOS).</li>
+        <li><strong>Diagnostic or Crash Reports</strong> – we do not integrate any crash reporting SDKs.</li>
+    </ul>
+
+    <!-- 2. LOCAL PROCESSING & DATA FLOW -->
+    <h2>2. Local Processing & Off-By-Design</h2>
+    <p>Every operation inside TextGhost happens <strong>directly on your device</strong> using Apple’s native frameworks:</p>
+    <div class="feature-grid">
+        <span class="feature-badge">📱 Vision Framework</span>
+        <span class="feature-badge">🎨 Core Graphics</span>
+        <span class="feature-badge">⚡ Accelerate Framework</span>
+        <span class="feature-badge">🔍 Real-time Preview</span>
+        <span class="feature-badge">✍️ Smart Style Matching</span>
+    </div>
+    <p>When you select an image from your album, TextGhost loads it into memory only for editing. Text recognition (mixed Chinese/English), font/style analysis, replacement compositing, undo/redo history — everything stays within the sandbox. Once you save the edited result, the output image is saved to your photo library at your request. The original image remains unaltered unless you explicitly overwrite the save operation (standard iOS photo library behavior). No data ever leaves your device — no cloud, no external servers, no background transfers.</p>
+
+    <!-- 3. APP PERMISSIONS -->
+    <h2>3. Permissions & Your Control</h2>
+    <p>TextGhost may request limited permissions only to enable core functionality. These permissions are standard and fully managed by iOS/iPadOS:</p>
+    <ul>
+        <li><strong>Photo Library Access (Read & Write)</strong> – Required to select an image for editing and to save the final result. You can grant “Limited Access” or “Full Access” based on your preference. TextGhost never syncs or uploads your photos elsewhere.</li>
+        <li><strong>No Internet Access</strong> – The app contains no networking code. It will never ask for WiFi or cellular permissions. You can even use TextGhost in Airplane mode.</li>
+    </ul>
+    <p>⚠️ <strong>Note</strong>: TextGhost does NOT request camera, microphone, contacts, motion, or Bluetooth permissions. You remain fully in control.</p>
+
+    <!-- 4. FEATURE HIGHLIGHTS (privacy context) -->
+    <h2>4. How Features Respect Your Privacy</h2>
+    <h3>📸 Intelligent Text Recognition</h3>
+    <p>Powered by Apple’s Vision framework — all text detection and character recognition happen instantly on the neural engine of your device. No visual data is sent to any recognition service.</p>
+    <h3>🔄 Seamless Replacement & Smart Style Matching</h3>
+    <p>Text style analysis (font, color, size, alignment) uses local Core Graphics to retain original look. Your new custom text is never logged or externalized.</p>
+    <h3>⏪ Multi-step Undo / Redo & Real-time Editing</h3>
+    <p>Your editing session state (undo/redo stack) exists only in temporary memory and is discarded when you close the image or exit the app. No persistent history is stored outside the current session.</p>
+    <h3>🌐 Multilingual Support (Chinese & English)</h3>
+    <p>TextGhost can recognize Simplified Chinese, Traditional Chinese, and English text without relying on cloud-based translation or OCR APIs. Your sensitive bilingual content never leaves your device.</p>
+
+    <!-- 5. CHILDREN'S PRIVACY -->
+    <h2>5. Children’s Privacy</h2>
+    <p>TextGhost does not knowingly collect any personal information from anyone, including children under 13. Since the app operates entirely offline and collects zero data, there is no risk of personal information being gathered from minors. Parents and guardians can feel confident allowing children to use TextGhost for creative image editing without privacy concerns.</p>
+
+    <!-- 6. THIRD-PARTY SERVICES -->
+    <h2>6. No Third-Party Services or SDKs</h2>
+    <p>TextGhost does not integrate any third-party libraries that transmit data (e.g., advertising SDKs, analytics frameworks, social media buttons, or crash reporters). The app is built purely with Apple’s native SDKs (Swift, UIKit/SwiftUI, Vision, Core Image, etc.). This means <strong>no external company</strong> receives any information about your usage, images, or device status.</p>
+
+    <!-- 7. DATA SECURITY -->
+    <h2>7. Security Measures (On-Device Only)</h2>
+    <p>Because TextGhost never collects or transmits data, the risk of data breach or unauthorized access is virtually eliminated. Your image files are stored only within your iOS sandbox container and system photo library. Standard iOS security protections (sandboxing, entitlements, file encryption) safeguard any temporary files created during the editing process. We do not store any user-generated content beyond the current session unless you decide to save the edited image manually.</p>
+
+    <!-- 8. CHANGES TO THIS PRIVACY POLICY -->
+    <h2>8. Changes to This Privacy Policy</h2>
+    <p>We may update this Privacy Policy occasionally to reflect clarifications or improvements in transparency. Since no data collection exists, any changes will be about better describing our offline-first architecture. The latest version will always be available within the app or on request. If we make material changes, we will update the “Effective Date” at the top of this policy. We encourage you to review this policy periodically.</p>
+
+    <!-- 9. CONTACT INFORMATION (omitted by request) but note about team name -->
+    <h2>9. Contact the Team</h2>
+    <p>Even though we choose not to provide specific contact information in this policy, the <strong>MingMing Team</strong> is dedicated to user privacy. If you have any privacy-related questions or concerns regarding TextGhost, you may reach out through the App Store review or community channels associated with MingMing Team. As we do not collect data, privacy inquiries can be handled without exchanging personal information.</p>
+    <p><em>For general feedback or support, please refer to the App Store listing page where you can contact the developer (MingMing Team).</em></p>
+
+    <!-- 10. YOUR CONSENT & LEGAL BASIS -->
+    <h2>10. Your Consent & Legal Compliance</h2>
+    <p>By using TextGhost, you consent to this Privacy Policy. Because we do not process any personal data, there is no need for separate consent mechanisms under GDPR, CCPA, or similar regulations. The entire application is compliant with global privacy laws by virtue of <strong>collecting zero user data</strong> and providing full offline functionality.</p>
+
+    <!-- Summary Table (optional short) -->
+    <hr>
+    <div style="background: #F9FAFE; border-radius: 24px; padding: 1rem 1.5rem; margin: 1rem 0;">
+        <p style="font-weight: 600; margin-bottom: 0.3rem;">📋 Summary – At a glance</p>
+        <p>✔️ No registration or login required.<br>
+        ✔️ No tracking identifiers (IDFA, device fingerprinting).<br>
+        ✔️ No analytics, no crashlytics, no ads.<br>
+        ✔️ Fully functional without internet connection.<br>
+        ✔️ Your images and text remain yours – 100% private.</p>
+    </div>
+
+    <!-- APP DESCRIPTION FULL (Core Features + Technical Advantages + Use Cases) embedded in privacy context -->
+    <h2>About TextGhost</h2>
+    <p><strong>Core Features</strong><br>
+    Intelligent Text Recognition – Powered by the Vision framework for accurate recognition of mixed Chinese and English text.<br>
+    Seamless Replacement Technology – Automatically analyzes the original text style to ensure new content blends perfectly.<br>
+    Real‑time Preview Editing – Precision selection tool with magnifier functionality.<br>
+    Smart Style Matching – Automatically retains the original font, color, and size of text.<br>
+    Multi‑step Undo & Redo – Full operation history support for worry‑free editing.</p>
+
+    <p><strong>Technical Advantages</strong><br>
+    On‑device Processing – All operations run locally on your device to protect privacy and security.<br>
+    High‑efficiency Algorithms – Optimized performance using Core Graphics and the Accelerate framework.<br>
+    Multilingual Support – Recognizes Simplified Chinese, Traditional Chinese, and English.<br>
+    Fluid Experience – Asynchronous processing keeps the interface responsive and smooth.</p>
+
+    <p><strong>Simple Workflow</strong><br>
+    1. Select an image from your album.<br>
+    2. Long press and drag to select the text area for replacement.<br>
+    3. The system automatically recognizes content and analyzes text styles.<br>
+    4. Enter your new custom text.<br>
+    5. Save the edited result with one tap.</p>
+
+    <p><strong>Application Scenarios</strong><br>
+    Poster text modification · Screenshot content editing · Social media graphic creation · Document image updates · Personalized image creativity</p>
+
+    <p><strong>Privacy Protection (Reaffirmed)</strong><br>
+    ✅ No network requests — all processing performed locally.<br>
+    ✅ No user data collection.<br>
+    ✅ No images uploaded to any server.<br>
+    ✅ Fully offline operation.<br>
+    ✅ No third-party dependencies.<br>
+    ✅ Completely anonymous experience.</p>
+
+    <div class="footer-note">
+        <span>© 2026 MingMing Team. TextGhost — Edit text in images with absolute privacy.</span><br>
+        <span style="font-size: 0.7rem;">This privacy policy applies exclusively to TextGhost and its offline processing model.</span>
+    </div>
+</div>
+</body>
+</html>
