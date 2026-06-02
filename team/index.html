@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>hikoming · indie iOS creator</title>
+    <!-- Google Fonts for clean typography -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome 6 (free) for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            background: linear-gradient(145deg, #fef9f5 0%, #f5f0eb 100%);
+            color: #1a1e2b;
+            line-height: 1.4;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* header area */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .logo-img {
+            width: 68px;
+            height: 68px;
+            border-radius: 24px;
+            background: white;
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.15);
+            object-fit: cover;
+            transition: transform 0.2s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.02);
+        }
+
+        .title h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1e2b3c, #2c4c6e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .title .nick {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: #5f6c7a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .intro-text {
+            max-width: 460px;
+            text-align: right;
+        }
+
+        .intro-text p {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #2c3e4e;
+            background: rgba(255, 255, 240, 0.7);
+            padding: 0.8rem 1.4rem;
+            border-radius: 50px;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .intro-text i {
+            color: #f97316;
+            margin-right: 6px;
+        }
+
+        /* Section heading */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 2rem 0 1.8rem 0;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title i {
+            font-size: 1.8rem;
+            color: #f57c00;
+            background: #fff0e0;
+            padding: 8px;
+            border-radius: 20px;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        /* app card */
+        .app-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(2px);
+            border-radius: 44px;
+            padding: 1.6rem 1.4rem 1.8rem 1.4rem;
+            transition: all 0.25s ease;
+            box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 240, 0.6);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-card:hover {
+            transform: translateY(-6px);
+            background: white;
+            box-shadow: 0 25px 35px -16px rgba(0, 0, 0, 0.2);
+            border-color: #ffe5cc;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .app-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            background: #fef3e8;
+            object-fit: cover;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s;
+        }
+
+        .app-name {
+            font-size: 1.55rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: #1f2e3a;
+        }
+
+        .app-desc {
+            font-size: 0.85rem;
+            color: #5f6c7a;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            background: #1e2b3c;
+            color: white;
+            padding: 0.7rem 1rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            width: fit-content;
+            border: none;
+            cursor: pointer;
+            margin-top: 0.6rem;
+        }
+
+        .download-btn i {
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .download-btn:hover {
+            background: #f57c00;
+            transform: scale(0.98);
+            box-shadow: 0 8px 14px -8px rgba(245, 124, 0, 0.4);
+        }
+
+        .download-btn:hover i {
+            transform: translateX(4px);
+        }
+
+        /* footer / social */
+        .footer {
+            margin-top: 5rem;
+            text-align: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding-top: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            color: #5e6c7c;
+        }
+
+        .footer .heart {
+            color: #f97316;
+        }
+
+        .badge-note {
+            font-size: 0.8rem;
+            background: #e9eef3;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 680px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .intro-text {
+                text-align: center;
+            }
+
+            .brand {
+                justify-content: center;
+            }
+
+            .section-title {
+                justify-content: center;
+            }
+
+            .apps-grid {
+                gap: 1.5rem;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+        }
+
+        /* subtle decorative */
+        .bg-shape {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(245, 158, 76, 0.08) 0%, rgba(255, 235, 215, 0) 70%);
+            pointer-events: none;
+            z-index: -1;
+            border-radius: 100%;
+        }
+
+        .bg-shape-left {
+            left: 0;
+            bottom: 0;
+            top: auto;
+            width: 500px;
+            background: radial-gradient(circle, rgba(100, 150, 200, 0.05) 0%, rgba(245, 245, 250, 0) 70%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-shape"></div>
+    <div class="bg-shape bg-shape-left"></div>
+
+    <div class="container">
+        <!-- Hero section: logo + nickname + intro -->
+        <div class="hero">
+            <div class="brand">
+                <img src="m-min_1.png" alt="hikoming logo" class="logo-img"
+                    onerror="this.onerror=null;this.src='https://placehold.co/68x68?text=HK';">
+                <div class="title">
+                    <h1>hikoming</h1>
+                    <div class="nick">
+                        <i class="fas fa-code"></i> <span>indie maker · iOS craftsmanship</span>
+                    </div>
+                </div>
+            </div>
+            <div class="intro-text">
+                <p><i class="fab fa-apple"></i> Programming enthusiast & iOS creator.<br> Crafting minimal, useful tools
+                    with a touch of soul.</p>
+            </div>
+        </div>
+
+        <!-- Featured Apps Section -->
+        <div class="section-title">
+            <i class="fas fa-cube"></i>
+            <span>My iOS Creations</span>
+        </div>
+
+        <div class="apps-grid">
+            <!-- Fitness Pet -->
+            <div class="app-card">
+                <div class="card-header">
+                    <img src="FitnessPet-min.png" alt="Fitness Pet icon" class="app-icon"
+                        onerror="this.onerror=null;this.src='https://placehold.co/70x70?text=FP';">
+                    <span class="app-name">Fitness Pet</span>
+                </div>
+                <div class="app-desc">
+                    Your playful workout companion. Level up your fitness routine with a cute virtual pet that grows as
+                    you move.
+                </div>
+                <a href="https://apps.apple.com/cn/app/id6749265068?l=zh-cn" target="_blank" rel="noopener noreferrer"
+                    class="download-btn">
+                    <i class="fab fa-app-store-ios"></i> Download on App Store
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- MagicM -->
+            <div class="app-card">
+                <div class="card-header">
+                    <img src="magicm-min.png" alt="MagicM icon" class="app-icon"
+                        onerror="this.onerror=null;this.src='https://placehold.co/70x70?text=MM';">
+                    <span class="app-name">MagicM</span>
+                </div>
+                <div class="app-desc">
+                    Unleash creativity with smart gestures and AI-assisted transformations. A magical toolkit for
+                    everyday tasks.
+                </div>
+                <a href="https://apps.apple.com/us/app/id6772682921?l=en-us" target="_blank" rel="noopener noreferrer"
+                    class="download-btn">
+                    <i class="fab fa-app-store-ios"></i> Download on App Store
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Units Converter Pro7 -->
+            <div class="app-card">
+                <div class="card-header">
+                    <img src="unitsconverter-min.png" alt="Units Converter Pro7 icon" class="app-icon"
+                        onerror="this.onerror=null;this.src='https://placehold.co/70x70?text=UC';">
+                    <span class="app-name">Units Converter Pro7</span>
+                </div>
+                <div class="app-desc">
+                    Precision unit conversion with elegant interface. Support 50+ categories, live currency rates and
+                    smart favorites.
+                </div>
+                <a href="https://apps.apple.com/us/app/id6751854654?l=en-us" target="_blank" rel="noopener noreferrer"
+                    class="download-btn">
+                    <i class="fab fa-app-store-ios"></i> Download on App Store
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- EasyCalc -->
+            <div class="app-card">
+                <div class="card-header">
+                    <img src="easycalc-min.png" alt="EasyCalc icon" class="app-icon"
+                        onerror="this.onerror=null;this.src='https://placehold.co/70x70?text=EC';">
+                    <span class="app-name">EasyCalc</span>
+                </div>
+                <div class="app-desc">
+                    Lightning-fast calculator with a clean design. Perfect for daily calculations, tip split, and more.
+                </div>
+                <a href="https://apps.apple.com/us/app/id6747636908?l=en-us" target="_blank" rel="noopener noreferrer"
+                    class="download-btn">
+                    <i class="fab fa-app-store-ios"></i> Download on App Store
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- TextGhost -->
+            <div class="app-card">
+                <div class="card-header">
+                    <img src="textghost-min.png" alt="TextGhost icon" class="app-icon"
+                        onerror="this.onerror=null;this.src='https://placehold.co/70x70?text=TG';">
+                    <span class="app-name">TextGhost</span>
+                </div>
+                <div class="app-desc">
+                    Invisible text tools, quick redaction and privacy-first text processing. Write in stealth mode.
+                </div>
+                <a href="https://apps.apple.com/us/app/id6748348317?l=en-us" target="_blank" rel="noopener noreferrer"
+                    class="download-btn">
+                    <i class="fab fa-app-store-ios"></i> Download on App Store
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- extra minimal note: all apps made with passion -->
+        <div style="margin-top: 3rem; text-align: center;">
+            <div class="badge-note">
+                <i class="fas fa-heart" style="color: #f97316;"></i> Built with Swift & SwiftUI · Available worldwide
+            </div>
+        </div>
+
+        <!-- footer with social / nickname and copyright -->
+        <div class="footer">
+            <div>
+                <i class="fab fa-twitter"></i> <i class="fab fa-github"></i> <i class="fas fa-envelope"></i>
+                <span style="margin: 0 12px">·</span>
+                <span><i class="fas fa-mug-hot"></i> hikoming · crafting code & design</span>
+            </div>
+            <div>
+                <span>© 2026 hikoming — indie iOS developer</span>
+                <span class="heart"> ♡ </span>
+                <span>All apps available on the App Store</span>
+            </div>
+            <div style="font-size: 0.7rem; opacity:0.6">
+                <i class="fas fa-laptop-code"></i> programming enthusiast · endless curiosity
+            </div>
+        </div>
+    </div>
+
+    <!-- small fallback for images (if any missing, visually acceptable) -->
+    <script>
+        (function () {
+            // optional: just ensure that if any image fails to load, we don't break layout
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('error', function (e) {
+                    // if missing, set a simple placeholder letter style but not intrusive
+                    if (!this.dataset.fallbackSet) {
+                        this.dataset.fallbackSet = 'true';
+                        this.style.background = '#e9eef3';
+                        this.style.display = 'flex';
+                        this.style.alignItems = 'center';
+                        this.style.justifyContent = 'center';
+                        this.style.fontWeight = 'bold';
+                        this.style.fontSize = '32px';
+                        this.style.color = '#f57c00';
+                        // we can't easily add text inside img, but background color gives subtle fallback
+                        this.alt = this.alt || 'app icon';
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>
