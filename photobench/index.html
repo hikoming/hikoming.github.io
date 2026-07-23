@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5" />
+    <title>PhotoBench · AI Photo Tools</title>
+    <!-- Font & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f8fafc;
+            color: #0b1b2f;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* header / hero */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+            padding-top: 1rem;
+        }
+
+        .hero-text {
+            flex: 1 1 360px;
+        }
+
+        .app-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            background: #0b1b2f;
+            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .app-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #0b1b2f;
+        }
+
+        .app-name span {
+            font-weight: 400;
+            color: #4b5b6e;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 1.2rem;
+            color: #0b1b2f;
+        }
+
+        .hero h1 i {
+            color: #2563eb;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #334155;
+            max-width: 540px;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            background: white;
+            border-radius: 80px;
+            padding: 0.6rem 1.2rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e2e8f0;
+            color: #1e293b;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge i {
+            color: #2563eb;
+        }
+
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #0b1b2f;
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border: none;
+            transition: 0.2s ease;
+            box-shadow: 0 8px 20px -6px rgba(11, 27, 47, 0.25);
+        }
+
+        .download-button i {
+            font-size: 1.2rem;
+        }
+
+        .download-button:hover {
+            background: #1e3a5f;
+            transform: scale(1.02);
+            box-shadow: 0 12px 28px -8px rgba(11, 27, 47, 0.35);
+        }
+
+        .hero-visual {
+            flex: 1 1 360px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            background: #ffffffcc;
+            backdrop-filter: blur(4px);
+            border-radius: 40px;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #ffffff;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            width: 100%;
+        }
+
+        .screenshot-card {
+            border-radius: 20px;
+            overflow: hidden;
+            background: #eef2f6;
+            aspect-ratio: 9 / 19.5;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+            transition: 0.2s ease;
+            border: 1px solid #e9edf2;
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 28px -8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* features grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 4.5rem 0 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.02);
+            border: 1px solid #edf2f7;
+            transition: 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: #d0dbe8;
+            box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.06);
+        }
+
+        .feature-icon {
+            font-size: 2.4rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+        .feature-card li {
+            display: flex;
+            gap: 0.7rem;
+            align-items: flex-start;
+            font-size: 0.95rem;
+            color: #334155;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .feature-card li:last-child {
+            border-bottom: 0;
+        }
+
+        .feature-card li i {
+            color: #2563eb;
+            font-size: 0.9rem;
+            margin-top: 0.2rem;
+            min-width: 1.2rem;
+        }
+
+        .privacy-highlight {
+            background: #f1f9fe;
+            border-radius: 32px;
+            padding: 2rem 2.2rem;
+            margin: 3.5rem 0 2.5rem;
+            border: 1px solid #dbeafe;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .privacy-highlight h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .privacy-highlight h2 i {
+            color: #2563eb;
+            font-size: 2rem;
+        }
+
+        .privacy-highlight p {
+            font-size: 1.1rem;
+            color: #1e293b;
+            max-width: 600px;
+        }
+
+        .privacy-highlight .badge {
+            background: white;
+            border: 1px solid #bdd9f0;
+        }
+
+        .export-section {
+            text-align: center;
+            padding: 2rem 0 1rem;
+        }
+
+        .export-section p {
+            font-size: 1rem;
+            color: #475569;
+            background: #eef2f6;
+            display: inline-block;
+            padding: 0.4rem 1.8rem;
+            border-radius: 60px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e2e8f0;
+            margin: 2rem 0;
+        }
+
+        .footer-note {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .footer-note i {
+            margin: 0 4px;
+        }
+
+        .footer-download-link {
+            color: #2563eb;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dotted #bdd9f0;
+        }
+
+        .footer-download-link:hover {
+            color: #0b1b2f;
+            border-bottom-color: #0b1b2f;
+        }
+
+        @media (max-width: 680px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .screenshot-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .privacy-highlight {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.2rem 1rem 2.5rem;
+            }
+
+            .hero-text {
+                flex: 1 1 100%;
+            }
+
+            .hero-visual {
+                padding: 1rem 0.5rem;
+            }
+
+            .download-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Hero -->
+        <div class="hero">
+            <div class="hero-text">
+                <div class="app-badge">
+                    <div class="app-icon">
+                        <img src="photobench.png" alt="PhotoBench icon" />
+                    </div>
+                    <span class="app-name">PhotoBench <span>· AI Photo Tools</span></span>
+                </div>
+                <h1>
+                    <i class="fas fa-bolt"></i> All‑in‑one<br />photo utility.
+                </h1>
+                <p>
+                    Compression, EXIF privacy, and on‑device AI enhancement —
+                    all processed locally. Your photos never leave your iPhone.
+                </p>
+                <div class="badge-group">
+                    <span class="badge"><i class="fas fa-shield-alt"></i> Privacy first</span>
+                    <span class="badge"><i class="fas fa-microchip"></i> On‑device AI</span>
+                    <span class="badge"><i class="fas fa-layer-group"></i> Batch ready</span>
+                </div>
+                <!-- 新增下载按钮 -->
+                <a href="https://apps.apple.com/us/app/id6761603586" target="_blank" rel="noopener noreferrer"
+                    class="download-button">
+                    <i class="fab fa-apple"></i> Download on the App Store
+                </a>
+            </div>
+
+            <!-- 6 screenshots -->
+            <div class="hero-visual">
+                <div class="screenshot-grid">
+                    <div class="screenshot-card"><img src="1.png" alt="Compression" loading="lazy" /></div>
+                    <div class="screenshot-card"><img src="2.png" alt="EXIF tools" loading="lazy" /></div>
+                    <div class="screenshot-card"><img src="3.png" alt="AI enhancement" loading="lazy" /></div>
+                    <div class="screenshot-card"><img src="4.png" alt="Face restoration" loading="lazy" /></div>
+                    <div class="screenshot-card"><img src="5.png" alt="Low-light" loading="lazy" /></div>
+                    <div class="screenshot-card"><img src="6.png" alt="Rain removal" loading="lazy" /></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <!-- compression -->
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-compress-arrows-alt"></i></div>
+                <h3>Photo Compression</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Compress multiple photos to reclaim storage</li>
+                    <li><i class="fas fa-sliders-h"></i> Adjust quality &amp; dimensions</li>
+                    <li><i class="fas fa-copy"></i> Keep originals; save processed copies</li>
+                    <li><i class="fas fa-chart-simple"></i> Clear progress &amp; result details</li>
+                </ul>
+            </div>
+
+            <!-- EXIF -->
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-camera-retro"></i></div>
+                <h3>EXIF Privacy Tools</h3>
+                <ul>
+                    <li><i class="fas fa-info-circle"></i> Inspect lens, aperture, ISO, GPS, date</li>
+                    <li><i class="fas fa-map-pin"></i> Remove location while keeping other data</li>
+                    <li><i class="fas fa-eraser"></i> Clear all EXIF metadata in one step</li>
+                    <li><i class="fas fa-images"></i> Process single or batch — originals unchanged</li>
+                </ul>
+            </div>
+
+            <!-- AI -->
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                <h3>On‑Device AI Enhancement</h3>
+                <ul>
+                    <li><i class="fas fa-user-astronaut"></i> Face Restoration: recover blurred details</li>
+                    <li><i class="fas fa-sparkles"></i> Quality Enhancement: clarity &amp; visual boost</li>
+                    <li><i class="fas fa-moon"></i> Low‑Light Enhancement: brighten dark scenes</li>
+                    <li><i class="fas fa-cloud-rain"></i> Rain Removal: reduce streaks &amp; droplets</li>
+                    <li><i class="fas fa-hand-pointer"></i> Press &amp; hold to compare original vs result</li>
+                    <li><i class="fas fa-file-export"></i> Export in JPEG, PNG, or HEIC</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Privacy highlight -->
+        <div class="privacy-highlight">
+            <div>
+                <h2><i class="fas fa-lock"></i> Privacy First</h2>
+                <p>
+                    Compression, EXIF cleanup, and AI enhancement run entirely on your iPhone.
+                    <strong>PhotoBench does not upload your photos</strong> — a new copy is saved
+                    only when you choose to export.
+                </p>
+            </div>
+            <span class="badge" style="font-size: 1rem; padding: 0.6rem 1.8rem;">
+                <i class="fas fa-check-circle" style="color: #2563eb;"></i> 100% on‑device
+            </span>
+        </div>
+
+        <!-- export formats -->
+        <div class="export-section">
+            <p><i class="fas fa-arrow-right" style="margin-right: 8px;"></i> Export in JPEG · PNG · HEIC</p>
+        </div>
+
+        <hr />
+
+        <!-- footer -->
+        <div class="footer-note">
+            <span><i class="fas fa-apple"></i> PhotoBench for iPhone</span>
+            <span>
+                <i class="fas fa-microchip"></i> On‑device AI ·
+                <i class="fas fa-shield-alt"></i> No upload
+            </span>
+            <span>
+                <a href="https://apps.apple.com/us/app/id6761603586" target="_blank" rel="noopener noreferrer"
+                    class="footer-download-link">
+                    <i class="fab fa-apple"></i> App Store
+                </a>
+            </span>
+        </div>
+
+    </div>
+</body>
+
+</html>
