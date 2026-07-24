@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>LuckNow · 3D Dice · Support</title>
+    <style>
+        /* reset & base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8f6f2;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #1e1e1e;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 40px 40px 30px 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04), 0 8px 20px rgba(0, 0, 0, 0.03);
+            padding: 2.5rem 2rem 2rem;
+        }
+
+        /* header */
+        .app-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.5rem 1rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid #ecebe7;
+            padding-bottom: 2rem;
+        }
+
+        .icon-wrapper {
+            flex-shrink: 0;
+            width: 90px;
+            height: 90px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+            background: #fff;
+        }
+
+        .icon-wrapper img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .title-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .app-name {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(145deg, #2b2b2b, #3d3d3d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #5a5a5a;
+            margin-top: 0.1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .promo {
+            margin-top: 0.3rem;
+            font-size: 0.95rem;
+            color: #3f3f3f;
+            background: #f0efe9;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-weight: 450;
+            letter-spacing: 0.01em;
+        }
+
+        .badge-health {
+            margin-left: 0.75rem;
+            display: inline-block;
+            background: #d9e6d4;
+            color: #1f4a2b;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        /* description */
+        .description {
+            font-size: 1.05rem;
+            color: #262626;
+            max-width: 780px;
+            margin-bottom: 2.8rem;
+            background: #faf9f6;
+            padding: 1.5rem 1.8rem;
+            border-radius: 28px;
+            border-left: 6px solid #b8c9b0;
+        }
+
+        .description strong {
+            color: #1d3b22;
+        }
+
+        /* features grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 1rem 1.2rem;
+            margin: 2.2rem 0 2.8rem;
+            background: #fcfbf9;
+            padding: 1.2rem 1.5rem;
+            border-radius: 36px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.95rem;
+            padding: 0.3rem 0;
+            border-bottom: 1px dashed #e2dfd7;
+        }
+
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+
+        .feature-item::before {
+            content: "◆";
+            color: #799b6e;
+            font-size: 0.7rem;
+            opacity: 0.7;
+        }
+
+        /* screenshot sections */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1.2rem;
+            letter-spacing: -0.01em;
+            color: #1e1e1e;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .section-title small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #6b6b6b;
+        }
+
+        .screenshot-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 1.5rem;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        .screenshot-card {
+            background: #faf9f6;
+            border-radius: 28px;
+            padding: 0.8rem 0.8rem 0.4rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            transition: all 0.1s ease;
+            border: 1px solid #eae7df;
+        }
+
+        .screenshot-card img {
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 140px;
+            max-height: 300px;
+            border-radius: 20px;
+            object-fit: contain;
+            background: #fff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        /* watch screenshots */
+        .watch-grid .screenshot-card img {
+            max-width: 110px;
+            max-height: 130px;
+            border-radius: 24px;
+        }
+
+        .watch-grid {
+            gap: 0.8rem 1.2rem;
+        }
+
+        .badge-watch {
+            display: inline-block;
+            background: #d3d9d0;
+            color: #1d2b1a;
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            letter-spacing: 0.03em;
+            margin-left: 0.4rem;
+        }
+
+        /* health note */
+        .health-note {
+            margin: 3rem 0 1.5rem;
+            background: #ecf3e8;
+            border-radius: 48px;
+            padding: 1.8rem 2.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem 2rem;
+            border: 1px solid #d4dfcb;
+        }
+
+        .health-note span {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .health-note p {
+            font-size: 1rem;
+            font-weight: 450;
+            color: #1b3a22;
+            max-width: 600px;
+        }
+
+        .health-note strong {
+            font-weight: 600;
+            color: #0d2b13;
+        }
+
+        /* footer */
+        .footer {
+            margin-top: 3.5rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #e6e2d9;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.8rem;
+            color: #4a4a4a;
+            font-size: 0.9rem;
+        }
+
+        .footer .copyright {
+            opacity: 0.7;
+            letter-spacing: 0.01em;
+        }
+
+        .footer .tagline {
+            font-weight: 350;
+            background: #f0eee8;
+            padding: 0.1rem 1rem;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            color: #3d3d3d;
+        }
+
+        .footer a {
+            color: #2e4d35;
+            text-decoration: none;
+            border-bottom: 1px dotted #b3c7ab;
+        }
+
+        .footer a:hover {
+            border-bottom: 1px solid #2e4d35;
+        }
+
+        /* responsive */
+        @media (max-width: 640px) {
+            body {
+                padding: 0.8rem;
+            }
+
+            .container {
+                padding: 1.5rem 1rem;
+                border-radius: 30px;
+            }
+
+            .app-name {
+                font-size: 1.9rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .icon-wrapper {
+                width: 70px;
+                height: 70px;
+            }
+
+            .description {
+                font-size: 0.95rem;
+                padding: 1.2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.2rem 0.8rem;
+                padding: 1rem;
+            }
+
+            .screenshot-card img {
+                max-width: 100px;
+                max-height: 220px;
+            }
+
+            .watch-grid .screenshot-card img {
+                max-width: 80px;
+                max-height: 100px;
+            }
+
+            .health-note {
+                padding: 1.2rem 1.5rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.3rem;
+            }
+        }
+
+        @media (max-width: 440px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* utility */
+        .text-muted {
+            color: #5f5f5f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- header -->
+        <div class="app-header">
+            <div class="icon-wrapper">
+                <img src="icon.png" alt="LuckNow App Icon" loading="lazy">
+            </div>
+            <div class="title-group">
+                <h1 class="app-name">LuckNow</h1>
+                <div class="subtitle">3D Dice for Every Game</div>
+                <div class="promo">
+                    Roll 1 to 6 animated 3D dice
+                    <span class="badge-health">✨ mindful play</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- description -->
+        <div class="description">
+            <strong>LuckNow</strong> is a focused 3D dice roller for iPhone and Apple Watch.
+            Perfect for board games, RPG actions, teaching probability, or quick decisions.
+            One tap, clear results. Smooth animation, sound, haptic feedback.
+            Your history, stats, and preferences stay private — no account, no internet.
+        </div>
+
+        <!-- features -->
+        <div class="features">
+            <div class="feature-item">Roll 1–6 animated 3D dice</div>
+            <div class="feature-item">Tap dice or button to roll</div>
+            <div class="feature-item">20 recent rolls with timestamps</div>
+            <div class="feature-item">Overall stats &amp; filter by dice count</div>
+            <div class="feature-item">Value, total, frequency, streaks</div>
+            <div class="feature-item">5 themes &amp; 7 dice colors</div>
+            <div class="feature-item">Slow / normal / fast animation</div>
+            <div class="feature-item">Sound &amp; haptic feedback control</div>
+            <div class="feature-item">Light, dark, or system appearance</div>
+            <div class="feature-item">VoiceOver support</div>
+            <div class="feature-item">English, 中文, Français, Português, Español</div>
+            <div class="feature-item">iPhone &amp; Apple Watch</div>
+        </div>
+
+        <!-- iPhone screenshots -->
+        <div class="section-title">
+            iPhone <small>· 4 screens</small>
+        </div>
+        <div class="screenshot-grid">
+            <div class="screenshot-card"><img src="1.png" alt="iPhone screenshot 1" loading="lazy"></div>
+            <div class="screenshot-card"><img src="2.png" alt="iPhone screenshot 2" loading="lazy"></div>
+            <div class="screenshot-card"><img src="3.png" alt="iPhone screenshot 3" loading="lazy"></div>
+            <div class="screenshot-card"><img src="4.png" alt="iPhone screenshot 4" loading="lazy"></div>
+        </div>
+
+        <!-- Apple Watch screenshots -->
+        <div class="section-title" style="margin-top: 3rem;">
+            Apple Watch <span class="badge-watch">companion</span> <small>· 3 screens</small>
+        </div>
+        <div class="screenshot-grid watch-grid">
+            <div class="screenshot-card"><img src="w0.png" alt="Apple Watch screenshot 0" loading="lazy"></div>
+            <div class="screenshot-card"><img src="w1.png" alt="Apple Watch screenshot 1" loading="lazy"></div>
+            <div class="screenshot-card"><img src="w2.png" alt="Apple Watch screenshot 2" loading="lazy"></div>
+        </div>
+
+        <!-- health & wellness note -->
+        <div class="health-note">
+            <span>🌿</span>
+            <p>
+                <strong>Roll mindfully.</strong> Use LuckNow for quick decisions,
+                classroom games, or simply to add a moment of playful clarity.
+                Small, intentional interactions support a balanced digital life.
+            </p>
+            <span style="font-size: 1.2rem; opacity: 0.7;">🎲</span>
+        </div>
+
+        <!-- footer / support & copyright -->
+        <div class="footer">
+            <div class="copyright">
+                © 2026 <strong>MingMing Team</strong> · All rights reserved.
+            </div>
+            <div class="tagline">
+                ⚡ support · lucknow@mingming.team
+            </div>
+            <div style="font-size: 0.8rem; opacity: 0.6;">
+                Made with focus &amp; clarity
+            </div>
+        </div>
+
+        <!-- small footnote: no contact details, only team -->
+        <div
+            style="margin-top: 0.8rem; font-size: 0.7rem; color: #8f8f8f; text-align: right; border-top: 1px solid #efede7; padding-top: 0.8rem;">
+            LuckNow · 3D Dice for Every Game · v1.4
+        </div>
+    </div>
+</body>
+
+</html>

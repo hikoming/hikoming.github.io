@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>Privacy Policy · LuckNow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f4f0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #1c1c1e;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 42px 42px 32px 32px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.03), 0 6px 18px rgba(0, 0, 0, 0.02);
+            padding: 2.8rem 2.5rem 2.2rem;
+        }
+
+        /* header */
+        .privacy-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.2rem;
+            border-bottom: 1px solid #eae8e2;
+            padding-bottom: 1.5rem;
+        }
+
+        .app-icon-small {
+            flex-shrink: 0;
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #f0eee9;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            border: 1px solid #ece9e2;
+        }
+
+        .app-icon-small img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .title-block h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #1a1a1a;
+            line-height: 1.1;
+        }
+
+        .title-block .sub {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #4b4b4b;
+            margin-top: 0.1rem;
+            opacity: 0.7;
+        }
+
+        .badge-privacy {
+            background: #d9e0d5;
+            color: #1e3a25;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-left: 0.5rem;
+        }
+
+        /* effective date */
+        .effective {
+            background: #f8f7f3;
+            padding: 0.6rem 1.4rem;
+            border-radius: 60px;
+            display: inline-block;
+            font-size: 0.85rem;
+            color: #2f2f2f;
+            margin-bottom: 2rem;
+            border: 1px solid #e3dfd6;
+        }
+
+        .effective strong {
+            font-weight: 600;
+            color: #1d2d1a;
+        }
+
+        /* policy content */
+        .policy-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+
+        .policy-block {
+            border-left: 4px solid #bfcfb6;
+            padding-left: 1.4rem;
+        }
+
+        .policy-block h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #1d2b1d;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .policy-block h2 .emoji {
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        .policy-block p {
+            margin-bottom: 0.7rem;
+            color: #2b2b2b;
+        }
+
+        .policy-block ul {
+            list-style: none;
+            padding-left: 0.5rem;
+            margin: 0.6rem 0 0.4rem;
+        }
+
+        .policy-block ul li {
+            padding: 0.15rem 0 0.15rem 1.6rem;
+            position: relative;
+            color: #2e2e2e;
+        }
+
+        .policy-block ul li::before {
+            content: "·";
+            position: absolute;
+            left: 0.2rem;
+            color: #6d8a62;
+            font-weight: 700;
+            font-size: 1.4rem;
+            line-height: 1.2;
+        }
+
+        .highlight-box {
+            background: #f3f6f0;
+            border-radius: 24px;
+            padding: 1.2rem 1.8rem;
+            margin: 0.8rem 0 0.2rem;
+            border: 1px solid #dfe7d9;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0.2rem;
+        }
+
+        .highlight-box strong {
+            color: #1f3d22;
+        }
+
+        .divider-light {
+            height: 1px;
+            background: linear-gradient(to right, #dcd9d0, transparent);
+            margin: 0.2rem 0 0.6rem;
+        }
+
+        .footer-note {
+            margin-top: 2.8rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #e6e2d9;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.8rem;
+            color: #4a4a4a;
+            font-size: 0.9rem;
+        }
+
+        .footer-note .copyright {
+            opacity: 0.7;
+            letter-spacing: 0.01em;
+        }
+
+        .footer-note .tag {
+            font-weight: 350;
+            background: #f0eee8;
+            padding: 0.1rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            color: #3d3d3d;
+        }
+
+        .footer-note .tag a {
+            color: #2e4d35;
+            text-decoration: none;
+            border-bottom: 1px dotted #b3c7ab;
+        }
+
+        .footer-note .tag a:hover {
+            border-bottom: 1px solid #2e4d35;
+        }
+
+        /* responsive */
+        @media (max-width: 640px) {
+            body {
+                padding: 0.8rem;
+            }
+
+            .container {
+                padding: 1.6rem 1.2rem;
+                border-radius: 32px;
+            }
+
+            .title-block h1 {
+                font-size: 1.8rem;
+            }
+
+            .app-icon-small {
+                width: 60px;
+                height: 60px;
+            }
+
+            .policy-block {
+                padding-left: 1rem;
+            }
+
+            .policy-block h2 {
+                font-size: 1.1rem;
+            }
+
+            .highlight-box {
+                padding: 1rem 1.2rem;
+            }
+
+            .footer-note {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.4rem;
+            }
+        }
+
+        @media (max-width: 440px) {
+            .privacy-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .title-block .sub {
+                font-size: 0.9rem;
+            }
+
+            .badge-privacy {
+                margin-left: 0;
+                display: inline-block;
+                margin-top: 0.2rem;
+            }
+        }
+
+        .text-muted {
+            color: #5f5f5f;
+        }
+
+        .small-print {
+            font-size: 0.8rem;
+            color: #686868;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- header -->
+        <div class="privacy-header">
+            <div class="app-icon-small">
+                <img src="icon.png" alt="LuckNow icon" loading="lazy">
+            </div>
+            <div class="title-block">
+                <h1>
+                    Privacy Policy
+                    <span class="badge-privacy">no account · no tracking</span>
+                </h1>
+                <div class="sub">LuckNow · 3D Dice for Every Game</div>
+            </div>
+        </div>
+
+        <!-- effective date -->
+        <div class="effective">
+            <strong>Effective:</strong> July 24, 2026 · <span style="opacity:0.7;">&nbsp;last updated: July 24,
+                2026</span>
+        </div>
+
+        <!-- policy content -->
+        <div class="policy-content">
+
+            <!-- 1. intro -->
+            <div class="policy-block">
+                <h2><span class="emoji">📘</span> 1. Our Commitment</h2>
+                <p>
+                    <strong>LuckNow</strong> is built with a simple belief: your data belongs to you.
+                    We do not collect, store, or share any personal information.
+                    There is no account creation, no analytics trackers, and no internet connection required
+                    to roll dice or review your history.
+                </p>
+                <p>
+                    All data — including your roll history, statistics, and app preferences —
+                    lives exclusively on your device. This policy explains what data is stored locally
+                    and how it is used.
+                </p>
+            </div>
+
+            <!-- 2. local data -->
+            <div class="policy-block">
+                <h2><span class="emoji">📱</span> 2. Local Data Storage</h2>
+                <p>
+                    LuckNow stores the following information <strong>only on your iPhone or Apple Watch</strong>
+                    using standard on‑device storage (UserDefaults and similar system containers):
+                </p>
+                <ul>
+                    <li><strong>Roll history</strong> — up to 20 most recent rolls with timestamps.</li>
+                    <li><strong>Statistics</strong> — aggregated data such as frequency, totals, and streaks, derived
+                        from your roll history.</li>
+                    <li><strong>App preferences</strong> — selected theme, dice color, animation speed, sound and haptic
+                        settings, and appearance (light/dark/system).</li>
+                </ul>
+                <div class="highlight-box">
+                    <p>🔒 This data is never sent to us or any third party. It is used solely to provide you with a
+                        personalised and continuous experience across app launches.</p>
+                </div>
+            </div>
+
+            <!-- 3. no data collection -->
+            <div class="policy-block">
+                <h2><span class="emoji">🚫</span> 3. What We Do Not Collect</h2>
+                <ul>
+                    <li><strong>No personal identifiers</strong> — we do not ask for or store your name, email, phone
+                        number, or any ID.</li>
+                    <li><strong>No location data</strong> — we never access your GPS or IP address.</li>
+                    <li><strong>No usage analytics</strong> — we do not use third‑party analytics, crash reporters, or
+                        tracking pixels.</li>
+                    <li><strong>No advertising</strong> — LuckNow contains no ads, and no data is shared with
+                        advertisers.</li>
+                    <li><strong>No cloud sync</strong> — your data never leaves your device; iCloud sync is not used.
+                    </li>
+                </ul>
+                <p style="margin-top: 0.5rem;">
+                    Because LuckNow does not collect any personal data, <strong>we do not sell, trade, or
+                        transfer</strong> any information — there is simply none to share.
+                </p>
+            </div>
+
+            <!-- 4. apple watch -->
+            <div class="policy-block">
+                <h2><span class="emoji">⌚</span> 4. Apple Watch Companion</h2>
+                <p>
+                    The Apple Watch version of LuckNow operates independently. It stores its own roll history
+                    and preferences locally on the watch. No data is synced to the iPhone or any other device.
+                </p>
+                <p>
+                    If you uninstall the app from your watch or iPhone, all locally stored data is removed
+                    permanently. No backup or residual data is retained.
+                </p>
+            </div>
+
+            <!-- 5. third-party -->
+            <div class="policy-block">
+                <h2><span class="emoji">🔗</span> 5. Third-Party Services</h2>
+                <p>
+                    LuckNow does not integrate with any third‑party frameworks, SDKs, or web services
+                    that collect data. The app is self‑contained and does not make any network requests
+                    (except for optional App Store receipt validation, which is handled by Apple and does
+                    not involve us).
+                </p>
+                <p class="small-print" style="margin-top: 0.3rem;">
+                    For transparency: the app uses Apple’s native frameworks (SwiftUI, UIKit, SpriteKit)
+                    which may process data on‑device as part of system operations. Apple’s privacy policy
+                    applies to those system‑level interactions.
+                </p>
+            </div>
+
+            <!-- 6. children -->
+            <div class="policy-block">
+                <h2><span class="emoji">🧒</span> 6. Children’s Privacy</h2>
+                <p>
+                    LuckNow is suitable for all ages. We do not knowingly collect any data from children
+                    under 13. Since no personal data is collected at all, there is no age‑based restriction
+                    or verification required.
+                </p>
+            </div>
+
+            <!-- 7. changes -->
+            <div class="policy-block">
+                <h2><span class="emoji">📝</span> 7. Changes to This Policy</h2>
+                <p>
+                    We may update this privacy policy occasionally to reflect minor clarifications or
+                    technical adjustments. The “Effective” date at the top of this page indicates the latest
+                    revision. We encourage you to review this page periodically.
+                </p>
+                <p>
+                    Because we do not collect contact information, we cannot notify you directly of changes.
+                    However, any update will be clearly marked here.
+                </p>
+            </div>
+
+            <!-- 8. your rights -->
+            <div class="policy-block">
+                <h2><span class="emoji">🛡️</span> 8. Your Rights &amp; Control</h2>
+                <p>
+                    Since all your data is stored locally, you have full control:
+                </p>
+                <ul>
+                    <li><strong>View</strong> — you can see your recent rolls and statistics inside the app.</li>
+                    <li><strong>Clear</strong> — you can clear your history and statistics at any time from the app’s
+                        settings.</li>
+                    <li><strong>Delete</strong> — uninstalling LuckNow removes all associated data from your device.
+                    </li>
+                </ul>
+                <div class="highlight-box" style="margin-top: 0.6rem;">
+                    <p>💡 <strong>No account, no data requests.</strong> We never ask for your data because we don’t
+                        have it. You are always in control.</p>
+                </div>
+            </div>
+
+            <!-- 9. contact (omitted per request) -->
+            <div class="policy-block" style="border-left-color: #cfcfcf; opacity: 0.8;">
+                <h2><span class="emoji">✉️</span> 9. Contact</h2>
+                <p>
+                    If you have any questions about this privacy policy or our practices,
+                    you can reach out to us via the App Store support page.
+                    <span style="opacity:0.5;">(contact details are not displayed here by design.)</span>
+                </p>
+                <p class="small-print" style="margin-top: 0.2rem;">
+                    We respond to all privacy‑related inquiries promptly.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- footer -->
+        <div class="footer-note">
+            <div class="copyright">
+                © 2026 <strong>MingMing Team</strong> · All rights reserved.
+            </div>
+            <div class="tag">
+                ⚡ privacy by design
+            </div>
+            <div style="font-size: 0.75rem; opacity: 0.5;">
+                LuckNow v1.4
+            </div>
+        </div>
+
+        <!-- small footnote -->
+        <div
+            style="margin-top: 0.6rem; font-size: 0.7rem; color: #8f8f8f; text-align: right; border-top: 1px solid #efede7; padding-top: 0.6rem;">
+            no tracking · no internet · your data stays yours
+        </div>
+    </div>
+</body>
+
+</html>
