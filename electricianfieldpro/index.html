@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Electrician Field Pro — Field Electrical Calculators</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #0d0f12;
+            color: #eef2f6;
+            line-height: 1.5;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1300px;
+            width: 100%;
+        }
+
+        /* header / hero */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2.5rem;
+            margin-bottom: 3.5rem;
+            background: linear-gradient(145deg, #11161c 0%, #1a212a 100%);
+            border-radius: 3rem;
+            padding: 3rem 3.5rem;
+            box-shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.05);
+            border: 1px solid #2d3743;
+        }
+
+        .hero-icon {
+            flex: 0 0 120px;
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.9), 0 0 0 1px #3a4654, 0 0 0 3px #1e262e;
+            overflow: hidden;
+            background: #12181f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.4rem;
+            background: linear-gradient(135deg, #fff 0%, #b8cdff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-text .subhead {
+            font-size: 1.4rem;
+            color: #9ab3d9;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .badge {
+            background: #212b36;
+            border-radius: 40px;
+            padding: 0.45rem 1.1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #cbd5e1;
+            border: 1px solid #334252;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: 0.02em;
+        }
+
+        .badge i {
+            color: #62a0ff;
+            font-size: 0.9rem;
+        }
+
+        .promo-box {
+            background: #1b232e;
+            border-left: 5px solid #3a8cff;
+            padding: 1.5rem 2rem;
+            border-radius: 1.5rem;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            color: #d3e0f0;
+            box-shadow: 0 8px 18px -6px #00000055;
+            border: 1px solid #2d3b4b;
+            border-left-width: 6px;
+        }
+
+        /* description / features */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title i {
+            color: #3a8cff;
+            font-size: 2rem;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1.2fr 0.9fr;
+            gap: 2.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .desc-card {
+            background: #11181f;
+            border-radius: 2rem;
+            padding: 2.2rem 2.2rem 2rem;
+            border: 1px solid #29323d;
+            box-shadow: 0 20px 30px -15px #00000080;
+        }
+
+        .desc-card p {
+            color: #b8c7dc;
+            margin-bottom: 1.4rem;
+            font-size: 1.05rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 1rem;
+            margin: 1.8rem 0 0.8rem;
+        }
+
+        .feature-item {
+            background: #1b242e;
+            border-radius: 1rem;
+            padding: 0.85rem 1rem;
+            font-weight: 500;
+            color: #d4e2f5;
+            border: 1px solid #2f3d4b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            transition: all 0.1s ease;
+        }
+
+        .feature-item i {
+            color: #3a8cff;
+            width: 1.2rem;
+            text-align: center;
+        }
+
+        .formula-block {
+            background: #0c1219;
+            border-radius: 1.8rem;
+            padding: 1.8rem 2rem;
+            border: 1px solid #26313d;
+        }
+
+        .formula-block h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            color: #eef4ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .formula-block h3 i {
+            color: #ffb347;
+        }
+
+        .formula-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem 1.2rem;
+            list-style: none;
+        }
+
+        .formula-list li {
+            background: #1b2530;
+            border-radius: 30px;
+            padding: 0.45rem 1.2rem;
+            font-size: 0.9rem;
+            color: #cbd9ed;
+            border: 1px solid #30404f;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .formula-list li i {
+            color: #5f9eff;
+            font-size: 0.8rem;
+        }
+
+        /* screenshots carousel */
+        .screenshots-section {
+            margin: 3.5rem 0 2.5rem;
+        }
+
+        .screenshots-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .screenshots-section h2 i {
+            color: #3a8cff;
+        }
+
+        .screenshot-scroll {
+            display: flex;
+            gap: 1.8rem;
+            overflow-x: auto;
+            padding: 0.8rem 0.4rem 1.8rem;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: #3a8cff #1e2833;
+        }
+
+        .screenshot-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .screenshot-scroll::-webkit-scrollbar-track {
+            background: #1e2833;
+            border-radius: 10px;
+        }
+
+        .screenshot-scroll::-webkit-scrollbar-thumb {
+            background: #3a8cff;
+            border-radius: 10px;
+        }
+
+        .screenshot-card {
+            flex: 0 0 auto;
+            width: 260px;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 20px 30px -8px #000000cc, 0 0 0 1px #2d3e4f;
+            background: #0f151c;
+            scroll-snap-align: start;
+            transition: transform 0.2s ease;
+            border: 1px solid #30404f;
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 1242 / 2688;
+            object-fit: cover;
+            background: #10171f;
+        }
+
+        .screenshot-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 40px -10px #000, 0 0 0 2px #3a8cff;
+        }
+
+        /* important notice */
+        .important-note {
+            background: #141c26;
+            border-radius: 2rem;
+            padding: 2rem 2.5rem;
+            margin: 2.5rem 0 3rem;
+            border: 1px solid #3e4c5c;
+            border-left: 6px solid #ffb347;
+            box-shadow: 0 15px 25px -12px #000000;
+        }
+
+        .important-note h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffc55a;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .important-note p {
+            color: #b0c1d6;
+            font-size: 0.98rem;
+            line-height: 1.6;
+        }
+
+        /* keywords */
+        .keywords-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem 0.9rem;
+            margin: 1.5rem 0 3rem;
+            justify-content: center;
+        }
+
+        .keyword-tag {
+            background: #1e2937;
+            border-radius: 30px;
+            padding: 0.5rem 1.4rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #b9cef0;
+            border: 1px solid #354859;
+            transition: all 0.15s;
+        }
+
+        .keyword-tag:hover {
+            background: #2a3a4e;
+            border-color: #3a8cff;
+            color: white;
+        }
+
+        /* footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 0 0.5rem;
+            color: #5c6f84;
+            font-size: 0.9rem;
+            border-top: 1px solid #222e3a;
+            margin-top: 2rem;
+        }
+
+        /* utility */
+        .text-accent {
+            color: #3a8cff;
+        }
+
+        .mt-3 {
+            margin-top: 1.8rem;
+        }
+
+        @media (max-width: 850px) {
+            .hero {
+                padding: 2rem 2rem;
+                gap: 1.8rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .grid-2col {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-icon {
+                flex: 0 0 90px;
+                width: 90px;
+                height: 90px;
+            }
+
+            body {
+                padding: 1.5rem 1rem;
+            }
+
+            .screenshot-card {
+                width: 220px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.9rem;
+            }
+
+            .hero-text .subhead {
+                font-size: 1.1rem;
+            }
+
+            .desc-card {
+                padding: 1.6rem;
+            }
+
+            .important-note {
+                padding: 1.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- HERO -->
+        <div class="hero">
+            <div class="hero-icon">
+                <img src="icon.png" alt="Electrician Field Pro app icon" loading="lazy">
+            </div>
+            <div class="hero-text">
+                <h1>Electrician Field Pro</h1>
+                <div class="subhead">Field Electrical Calculators</div>
+                <div class="badge-row">
+                    <span class="badge"><i class="fas fa-bolt"></i> Utilities</span>
+                    <span class="badge"><i class="fas fa-chart-simple"></i> Productivity</span>
+                    <span class="badge"><i class="fas fa-briefcase"></i> Business-ready</span>
+                    <span class="badge"><i class="fas fa-wifi"></i> Offline core</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROMO TEXT -->
+        <div class="promo-box">
+            <i class="fas fa-bullhorn" style="color: #3a8cff; margin-right: 10px;"></i>
+            Your offline electrical toolkit for wire sizing, voltage drop, breakers, conduit fill, box fill, motors, and
+            more. Review steps, save calculations, and share results.
+        </div>
+
+        <!-- 2-COL: DESCRIPTION + FORMULAS -->
+        <div class="grid-2col">
+            <!-- left: description + field tools -->
+            <div class="desc-card">
+                <p><strong style="color: #d8e6ff;">Electrician Field Pro</strong> is a practical electrical calculation
+                    toolkit for electricians, electrical contractors, apprentices, field technicians, and engineers.</p>
+                <p>Get fast, reviewable results for common electrical tasks, with clear inputs, assumptions, calculation
+                    steps, warnings, and reference context. Core calculations are available offline, so you can keep
+                    working when the jobsite connection is unreliable.</p>
+
+                <h3 style="font-size: 1.5rem; margin: 2rem 0 1.2rem; display: flex; align-items: center; gap: 8px;"><i
+                        class="fas fa-tools" style="color: #3a8cff;"></i> Field tools</h3>
+                <div class="feature-grid">
+                    <div class="feature-item"><i class="fas fa-ruler"></i> Wire Size</div>
+                    <div class="feature-item"><i class="fas fa-arrow-down-long"></i> Voltage Drop</div>
+                    <div class="feature-item"><i class="fas fa-toggle-on"></i> Breaker / OCPD</div>
+                    <div class="feature-item"><i class="fas fa-pipe-valve"></i> Conduit Fill</div>
+                    <div class="feature-item"><i class="fas fa-box"></i> Box Fill</div>
+                    <div class="feature-item"><i class="fas fa-fan"></i> Motor</div>
+                    <div class="feature-item"><i class="fas fa-table-list"></i> Panel Schedule</div>
+                    <div class="feature-item"><i class="fas fa-charging-station"></i> EV Charger & Generator</div>
+                    <div class="feature-item"><i class="fas fa-palette"></i> Resistor Color</div>
+                </div>
+
+                <div
+                    style="margin: 1.8rem 0 0.6rem; background: #1b2632; border-radius: 1.2rem; padding: 1.2rem 1.4rem; border: 1px solid #2b3e52;">
+                    <p style="margin-bottom: 0.5rem; color: #c6d9f5; font-weight: 500;"><i class="fas fa-check-circle"
+                            style="color: #3a8cff;"></i> Built for field work</p>
+                    <ul
+                        style="color: #adc0d9; font-size: 0.95rem; list-style: none; display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem;">
+                        <li><i class="fas fa-circle-check" style="color: #3a8cff; font-size: 0.7rem;"></i> Focused input
+                            screens</li>
+                        <li><i class="fas fa-circle-check" style="color: #3a8cff; font-size: 0.7rem;"></i> 1-phase &
+                            3-phase</li>
+                        <li><i class="fas fa-circle-check" style="color: #3a8cff; font-size: 0.7rem;"></i> Copper /
+                            aluminum</li>
+                        <li><i class="fas fa-circle-check" style="color: #3a8cff; font-size: 0.7rem;"></i> AWG, kcmil,
+                            V, A, W…</li>
+                        <li><i class="fas fa-circle-check" style="color: #3a8cff; font-size: 0.7rem;"></i>
+                            NEC-referenced data</li>
+                        <li><i class="fas fa-circle-check" style="color: #3a8cff; font-size: 0.7rem;"></i> History &
+                            favorites</li>
+                        <li><i class="fas fa-circle-check" style="color: #3a8cff; font-size: 0.7rem;"></i> PDF export &
+                            share</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- right: formulas + extra -->
+            <div class="formula-block">
+                <h3><i class="fas fa-square-root-variable"></i> Electrical formulas</h3>
+                <ul class="formula-list">
+                    <li><i class="fas fa-caret-right"></i> Ohm's Law</li>
+                    <li><i class="fas fa-caret-right"></i> Power & 3-phase current</li>
+                    <li><i class="fas fa-caret-right"></i> Transformer ratios</li>
+                    <li><i class="fas fa-caret-right"></i> Series & parallel resistance</li>
+                    <li><i class="fas fa-caret-right"></i> Voltage divider</li>
+                    <li><i class="fas fa-caret-right"></i> Frequency & period</li>
+                    <li><i class="fas fa-caret-right"></i> AC reactance</li>
+                    <li><i class="fas fa-caret-right"></i> kVA & energy cost</li>
+                </ul>
+
+                <div
+                    style="margin-top: 2.2rem; background: #101a24; border-radius: 1.4rem; padding: 1.6rem; border: 1px solid #2b3c4e;">
+                    <p style="font-size: 1.05rem; color: #d0e2ff; font-weight: 500; margin-bottom: 1rem;"><i
+                            class="fas fa-mobile-screen-button" style="color: #3a8cff;"></i> Field-ready output</p>
+                    <p style="color: #9fb3cc; font-size: 0.95rem;">Clear distinction between calculated values,
+                        suggestions, warnings, and review items. Save, export, and share from one place.</p>
+                    <p style="color: #b8cef0; margin-top: 1rem; font-weight: 500;">Electrician Field Pro helps you
+                        calculate, verify, explain, save, and share.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREENSHOTS (6 images) -->
+        <div class="screenshots-section">
+            <h2><i class="fas fa-images"></i> Inside the app</h2>
+            <div class="screenshot-scroll">
+                <div class="screenshot-card"><img src="appstore_01-min.png" alt="App screenshot 1" loading="lazy"></div>
+                <div class="screenshot-card"><img src="appstore_02-min.png" alt="App screenshot 2" loading="lazy"></div>
+                <div class="screenshot-card"><img src="appstore_03-min.png" alt="App screenshot 3" loading="lazy"></div>
+                <div class="screenshot-card"><img src="appstore_04-min.png" alt="App screenshot 4" loading="lazy"></div>
+                <div class="screenshot-card"><img src="appstore_05-min.png" alt="App screenshot 5" loading="lazy"></div>
+                <div class="screenshot-card"><img src="appstore_06-min.png" alt="App screenshot 6" loading="lazy"></div>
+            </div>
+        </div>
+
+        <!-- IMPORTANT DISCLAIMER -->
+        <div class="important-note">
+            <h4><i class="fas fa-triangle-exclamation"></i> IMPORTANT</h4>
+            <p>Electrician Field Pro provides calculation aids and screening results. It is not a complete NEC code book
+                and does not certify code compliance or replace the National Electrical Code, local amendments,
+                manufacturer instructions, engineering judgment, permits, inspections, or site verification.
+                Code-referenced data and calculation assumptions should be reviewed for the specific installation before
+                work begins.</p>
+        </div>
+
+        <!-- KEYWORDS (100 bytes equivalent) -->
+        <div class="keywords-cloud">
+            <span class="keyword-tag">voltage drop</span>
+            <span class="keyword-tag">wire sizing</span>
+            <span class="keyword-tag">breaker</span>
+            <span class="keyword-tag">ocpd</span>
+            <span class="keyword-tag">conduit fill</span>
+            <span class="keyword-tag">box fill</span>
+            <span class="keyword-tag">motor</span>
+            <span class="keyword-tag">ampacity</span>
+            <span class="keyword-tag">nec</span>
+            <span class="keyword-tag">panel load</span>
+        </div>
+
+        <!-- subtle footer -->
+        <div class="footer">
+            <p>Electrician Field Pro — Field Electrical Calculators · Utilities / Productivity / Business</p>
+            <p style="margin-top: 0.5rem; opacity: 0.7; font-size: 0.8rem;">Optimized for iPhone & iPad · works offline
+                for core calculations</p>
+        </div>
+    </div>
+</body>
+
+</html>

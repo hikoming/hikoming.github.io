@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Privacy Policy — Electrician Field Pro</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #0d0f12;
+            color: #eef2f6;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: #11181f;
+            border-radius: 2.5rem;
+            padding: 2.5rem 3rem;
+            border: 1px solid #29323d;
+            box-shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.05);
+        }
+
+        /* Header */
+        .policy-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #26313d;
+            flex-wrap: wrap;
+        }
+
+        .policy-header .icon-box {
+            flex: 0 0 64px;
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            overflow: hidden;
+            background: #12181f;
+            box-shadow: 0 8px 18px -6px #000000aa, 0 0 0 1px #334252;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .policy-header .icon-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .policy-header .title-block {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .policy-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #fff 0%, #b8cdff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            margin-bottom: 0.2rem;
+        }
+
+        .policy-header .meta {
+            font-size: 0.95rem;
+            color: #8ea3c0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.5rem;
+        }
+
+        .policy-header .meta i {
+            color: #3a8cff;
+            margin-right: 4px;
+        }
+
+        /* Content */
+        .policy-content h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #d8e6ff;
+            margin: 2rem 0 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .policy-content h2 i {
+            color: #3a8cff;
+            font-size: 1.3rem;
+            width: 1.6rem;
+            text-align: center;
+        }
+
+        .policy-content h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #c6d9f5;
+            margin: 1.5rem 0 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .policy-content h3 i {
+            color: #5f9eff;
+            font-size: 0.9rem;
+        }
+
+        .policy-content p {
+            color: #b8c7dc;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .policy-content ul {
+            list-style: none;
+            margin: 1rem 0 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .policy-content ul li {
+            color: #b8c7dc;
+            padding-left: 1.8rem;
+            position: relative;
+            font-size: 0.98rem;
+        }
+
+        .policy-content ul li i {
+            color: #3a8cff;
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            font-size: 0.85rem;
+        }
+
+        .highlight-box {
+            background: #1b2632;
+            border-radius: 1.2rem;
+            padding: 1.4rem 1.8rem;
+            margin: 1.8rem 0;
+            border-left: 5px solid #3a8cff;
+            border: 1px solid #2b3e52;
+            border-left-width: 5px;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: #ccdef5;
+            font-size: 0.98rem;
+        }
+
+        .highlight-box p i {
+            color: #3a8cff;
+            margin-right: 8px;
+        }
+
+        .footer-note {
+            margin-top: 2.5rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #26313d;
+            text-align: center;
+            color: #7e91a8;
+            font-size: 0.9rem;
+        }
+
+        .footer-note strong {
+            color: #b8cdff;
+            font-weight: 600;
+        }
+
+        .footer-note .team {
+            color: #3a8cff;
+            font-weight: 500;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 1.8rem;
+            color: #8ea3c0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.15s;
+            background: #1b232e;
+            padding: 0.6rem 1.4rem;
+            border-radius: 40px;
+            border: 1px solid #2d3b4b;
+        }
+
+        .back-link:hover {
+            color: #fff;
+            border-color: #3a8cff;
+            background: #1f2b3a;
+        }
+
+        .back-link i {
+            color: #3a8cff;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 1.8rem 1.5rem;
+                border-radius: 2rem;
+            }
+
+            .policy-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .policy-header .icon-box {
+                flex: 0 0 50px;
+                width: 50px;
+                height: 50px;
+                border-radius: 14px;
+            }
+
+            body {
+                padding: 1rem 0.8rem;
+            }
+
+            .policy-content h2 {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .container {
+                padding: 1.4rem 1.1rem;
+            }
+
+            .policy-header {
+                gap: 0.9rem;
+            }
+
+            .policy-header h1 {
+                font-size: 1.4rem;
+            }
+
+            .highlight-box {
+                padding: 1.1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="policy-header">
+            <div class="icon-box">
+                <img src="appicon.png" alt="Electrician Field Pro icon" loading="lazy">
+            </div>
+            <div class="title-block">
+                <h1>Privacy Policy</h1>
+                <div class="meta">
+                    <span><i class="fas fa-shield-halved"></i> Electrician Field Pro</span>
+                    <span><i class="fas fa-calendar-alt"></i> Effective: April 1, 2025</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="policy-content">
+            <p><strong style="color: #d8e6ff;">MingMing Team</strong> ("we," "us," or "our") operates the
+                <strong>Electrician Field Pro</strong> mobile application (the "App"). This Privacy Policy explains how
+                we collect, use, disclose, and safeguard your information when you use our App. Please read this policy
+                carefully. By using the App, you agree to the collection and use of information in accordance with this
+                policy.
+            </p>
+
+            <div class="highlight-box">
+                <p><i class="fas fa-circle-info"></i> <strong>Summary:</strong> Electrician Field Pro is designed as an
+                    offline-first calculation tool. We do not collect personal data from your calculations, and we do
+                    not sell your information. Core calculation features work without an internet connection or account.
+                </p>
+            </div>
+
+            <h2><i class="fas fa-database"></i> 1. Information We Collect</h2>
+            <p>We collect minimal information to operate and improve the App. The types of information we may collect
+                include:</p>
+
+            <h3><i class="fas fa-chevron-right"></i> a. Information You Provide Voluntarily</h3>
+            <ul>
+                <li><i class="fas fa-circle"></i> <strong>Support communications:</strong> If you contact us for
+                    support, we may collect your email address and any information you include in your message.</li>
+                <li><i class="fas fa-circle"></i> <strong>Feedback:</strong> Any feedback, suggestions, or reviews you
+                    voluntarily submit.</li>
+            </ul>
+
+            <h3><i class="fas fa-chevron-right"></i> b. Automatically Collected Information</h3>
+            <ul>
+                <li><i class="fas fa-circle"></i> <strong>Usage data:</strong> We may collect anonymized, aggregated
+                    data about how you interact with the App (e.g., feature usage frequency) to improve performance and
+                    user experience.</li>
+                <li><i class="fas fa-circle"></i> <strong>Device information:</strong> Non-identifiable technical data
+                    such as device model, operating system version, and app version, used for diagnostics and
+                    compatibility.</li>
+                <li><i class="fas fa-circle"></i> <strong>Crash reports:</strong> If the App crashes, we may collect
+                    anonymized crash logs to fix bugs. These logs do not contain your calculation inputs or personal
+                    identifiers.</li>
+            </ul>
+
+            <h3><i class="fas fa-chevron-right"></i> c. Calculation Data</h3>
+            <p>All calculations, inputs, saved history, and favorites are stored <strong>locally on your
+                    device</strong>. We do not transmit, access, or store your calculation data on our servers. You have
+                full control over this data and can delete it at any time by clearing the App's data or uninstalling the
+                App.</p>
+
+            <h2><i class="fas fa-gears"></i> 2. How We Use Your Information</h2>
+            <p>We use the limited information we collect for the following purposes:</p>
+            <ul>
+                <li><i class="fas fa-circle"></i> To provide, maintain, and improve the App's functionality.</li>
+                <li><i class="fas fa-circle"></i> To respond to your support requests and feedback.</li>
+                <li><i class="fas fa-circle"></i> To monitor usage trends and diagnose technical issues.</li>
+                <li><i class="fas fa-circle"></i> To comply with legal obligations and enforce our terms.</li>
+            </ul>
+
+            <h2><i class="fas fa-share-nodes"></i> 3. Sharing and Disclosure</h2>
+            <p>We do not sell, trade, or rent your personal information to third parties. We may share information only
+                in the following limited circumstances:</p>
+            <ul>
+                <li><i class="fas fa-circle"></i> <strong>Service providers:</strong> Trusted third-party services that
+                    assist us in operating the App (e.g., analytics, crash reporting) under strict confidentiality
+                    agreements. These providers only receive anonymized data.</li>
+                <li><i class="fas fa-circle"></i> <strong>Legal requirements:</strong> If required by law, regulation,
+                    or valid legal process, we may disclose information to comply with such obligations.</li>
+                <li><i class="fas fa-circle"></i> <strong>Business transfers:</strong> In the event of a merger,
+                    acquisition, or sale of assets, your information may be transferred as part of that transaction. We
+                    will notify you of any such change.</li>
+            </ul>
+
+            <h2><i class="fas fa-lock"></i> 4. Data Security</h2>
+            <p>We take reasonable measures to protect the information we collect. However, no method of electronic
+                storage or transmission over the internet is 100% secure. While we strive to use commercially acceptable
+                means to protect your information, we cannot guarantee absolute security.</p>
+            <p>Because core calculations are stored locally on your device, the security of that data depends on your
+                device's security settings (e.g., passcode, encryption). We recommend keeping your device software
+                updated and using device-level protections.</p>
+
+            <h2><i class="fas fa-child"></i> 5. Children's Privacy</h2>
+            <p>The App is not directed to individuals under the age of 13 (or the applicable age of consent in your
+                jurisdiction). We do not knowingly collect personal information from children. If you become aware that
+                a child has provided us with personal information, please contact us, and we will take steps to delete
+                such information.</p>
+
+            <h2><i class="fas fa-globe"></i> 6. Third-Party Links and Services</h2>
+            <p>The App may contain links to third-party websites or services (e.g., NEC references, manufacturer
+                documentation). We are not responsible for the privacy practices of those third parties. We encourage
+                you to review their privacy policies before providing any information.</p>
+
+            <h2><i class="fas fa-rotate"></i> 7. Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by
+                posting the new policy within the App or on our website. Your continued use of the App after such
+                changes constitutes your acceptance of the updated policy.</p>
+
+            <h2><i class="fas fa-envelope"></i> 8. Contact Us</h2>
+            <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices,
+                please contact us at:</p>
+            <div class="highlight-box" style="border-left-color: #3a8cff;">
+                <p><i class="fas fa-paper-plane"></i> <strong>MingMing Team</strong><br>
+                    Email: <span style="color: #8bb4ff;">privacy@mingmingteam.com</span><br>
+                    <span style="font-size: 0.9rem; color: #9fb3cc;">We aim to respond within 48 hours on business
+                        days.</span>
+                </p>
+            </div>
+
+            <p style="margin-top: 1.5rem; color: #a0b4ce; font-size: 0.95rem;"><i class="fas fa-check-circle"
+                    style="color: #3a8cff;"></i> By using Electrician Field Pro, you acknowledge that you have read and
+                understood this Privacy Policy.</p>
+
+            <!-- Back link (optional, for navigation) -->
+            <div style="display: flex; justify-content: center;">
+                <a href="#" class="back-link" onclick="window.history.back(); return false;">
+                    <i class="fas fa-arrow-left"></i> Back to App
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-note">
+            <p>© 2025 <strong>MingMing Team</strong>. All rights reserved.</p>
+            <p style="margin-top: 0.4rem; font-size: 0.85rem;">Electrician Field Pro — Field Electrical Calculators ·
+                <span class="team">MingMing Team</span>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
